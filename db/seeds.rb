@@ -128,6 +128,7 @@ recipes = [
 { name:  "Poulet au curry", time: 45, difficulty: 2, cost: 1, vegetal: false, co2: 550, ingredients: ["Poulet", " curry", " lait de coco"] },
 ]
 
+
 recipes.each do |recipe|
   Recipe.create!(
     name: recipe[:name],
@@ -140,6 +141,7 @@ recipes.each do |recipe|
 end
 
 puts "#{recipes.size} recettes ont été créées avec succès !"
+
 
 # # Create ingredients
 # ingredient_records = ingredients.map do |ingredient|
