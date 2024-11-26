@@ -4,4 +4,7 @@
 <% end %>
 </ul>
 
-<%= link_to "New", new_recipe_path, class="btn btn-primary" %>
+
+  <div class="d-flex justify-content-center">
+    <%= link_to "New Recipe", new_recipe_path(@recipes), class: "btn btn-primary" %>
+</div>

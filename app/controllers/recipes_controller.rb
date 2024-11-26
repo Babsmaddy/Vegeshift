@@ -7,10 +7,14 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
   end
 
+  def new
+    @recipe = Recipe.new
+  end
+
   def create
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
-      redirect_to recipe_path(@recipe)
+      redirect_to recipes_path
     else
       render :new, status: :unprocessable_entity
     end
