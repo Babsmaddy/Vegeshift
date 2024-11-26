@@ -1,0 +1,10 @@
+<ul>
+<% @recipes.each do |recipe| %>
+  <li><%= recipe.name %></li>
+<% end %>
+</ul>
+
+
+  <div class="d-flex justify-content-center">
+    <%= link_to "New Recipe", new_recipe_path(@recipes), class: "btn btn-primary" %>
+</div>
