@@ -116,6 +116,12 @@ recipes = [
   # Add 17 more recipes similarly...
 ]
 
+ingredients.each do |ingredient|
+  Ingredient.create!(name: ingredient[:name], co2: ingredient[:co2])
+end
+
+puts "#{ingredients.size} ingrédients ont été créés avec succès !"
+
 # # Create ingredients
 # ingredient_records = ingredients.map do |ingredient|
 #   Ingredient.create!(ingredient)
