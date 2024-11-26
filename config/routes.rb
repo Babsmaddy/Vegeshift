@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   resources :recipes, only: [:create, :index, :show] do
-    resources :dailies, only: [:create]
-    resources :favorites, only: [:create]
+    resources :dailies, only: [:create, :destroy]
+    resources :favorites, only: [:create, :destroy]
   end
   resources :dashboards, only: [:index, :my_recipies]
 
