@@ -8,7 +8,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-# Clear existing data
+puts "Cleaning the db"
 Ingredient.destroy_all
 Recipe.destroy_all
 RecipeIngredient.destroy_all
@@ -106,21 +106,42 @@ ingredients = [
 { name: "Yaourt", co2: 60 }
 ]
 
-
-
-# Seed recipes
-recipes = [
-  { name: "Spaghetti al Pomodoro", time: 30, difficulty: 2, cost: 10, vegetal: true, steps: "Cook pasta, make tomato sauce, mix together.", ingredients: ["Pasta", "Tomato", "Garlic", "Basil"] },
-  { name: "Chicken Curry", time: 60, difficulty: 3, cost: 15, vegetal: false, steps: "Cook chicken, prepare curry sauce, serve with rice.", ingredients: ["Chicken", "Rice", "Garlic", "Carrot"] },
-  { name: "Vegetable Stir Fry", time: 25, difficulty: 1, cost: 8, vegetal: true, steps: "Stir fry vegetables, serve with rice.", ingredients: ["Rice", "Carrot", "Mushroom", "Spinach"] },
-  # Add 17 more recipes similarly...
-]
-
 ingredients.each do |ingredient|
   Ingredient.create!(name: ingredient[:name], co2: ingredient[:co2])
 end
 
 puts "#{ingredients.size} ingrédients ont été créés avec succès !"
+
+
+# # Seed recipes
+recipes = [
+{ name:  "Tarte aux abricots", time: 30, difficulty: 1, cost: 3, vegetal: true, co2: 100, ingredients: ["abricots", "beurre", "farine", "sucre"] },
+{ name:  "Poulet aux carottes", time: 45, difficulty: 1, cost: 1, vegetal: false, co2: 600, ingredients: ["poulet", " carottes", " ail", " épices"] },
+{ name:  "Velouté de courgettes", time: 20, difficulty: 2, cost: 2, vegetal: true, co2: 80, ingredients: ["Courgettes", " basilic", " lait"] },
+{ name:  "Ratatouille", time: 10, difficulty: 1, cost: 1, vegetal: true, co2: 120, ingredients: ["Aubergines", " courgettes", " poivrons", " tomates"] },
+{ name:  "Gratin de brocolis", time: 30, difficulty: 3, cost: 2, vegetal: true, co2: 100, ingredients: ["Brocolis", " fromage", " crème"] },
+{ name:  "Curry de pois chiches", time: 45, difficulty: 2, cost: 1, vegetal: true, co2: 200, ingredients: ["Pois chiches", " lait de coco", " curry"] },
+{ name:  "Salade d'avocat et grenade", time: 20, difficulty: 3, cost: 3, vegetal: true, co2: 200, ingredients: ["Avocat", " grenade", " laitue"] },
+{ name:  "Soupe de carottes", time: 10, difficulty: 1, cost: 1, vegetal: true, co2: 30, ingredients: ["Carottes", " oignon", " épices"] },
+{ name:  "Pizza aux légumes", time: 60, difficulty: 3, cost: 2, vegetal: true, co2: 100, ingredients: ["Aubergines", " courgettes", " tomates", " fromage"] },
+{ name:  "Poêlée de champignons et épinards", time: 120, difficulty: 2, cost: 3, vegetal: true, co2: 60, ingredients: ["Champignons", " épinards", " ail"] },
+{ name:  "Poulet au curry", time: 45, difficulty: 2, cost: 1, vegetal: false, co2: 550, ingredients: ["Poulet", " curry", " lait de coco"] },
+]
+
+
+recipes.each do |recipe|
+  Recipe.create!(
+    name: recipe[:name],
+    time: recipe[:time],
+    difficulty: recipe[:difficulty],
+    cost: recipe[:cost],
+    vegetal: recipe[:vegetal],
+    co2: recipe[:co2],
+    )
+end
+
+puts "#{recipes.size} recettes ont été créées avec succès !"
+
 
 # # Create ingredients
 # ingredient_records = ingredients.map do |ingredient|
