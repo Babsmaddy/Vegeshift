@@ -1,7 +1,7 @@
 <div class="main-img">
   <%= image_tag("frisbee.jpg", id:"img_main") %>
 </div>
-<div class="content">
+<div class="content" data-controller="datepicker">
   <div class="container px-4">
     <div class="mt-3 mb-2">
       <hr id="popup">
@@ -59,7 +59,7 @@
   </div>
   <hr>
     <div class="text-center">
-      <a href="#" class="button-veggie-100">Ajouter à ma semaine</a>
+      <a href="#" class="button-veggie-100" data-datepicker-target="button">Ajouter à ma semaine</a>
     </div>
   <hr>
   <div>
