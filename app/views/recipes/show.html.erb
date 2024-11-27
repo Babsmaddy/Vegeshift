@@ -75,7 +75,7 @@
  <hr>
    <div>
     <h3>Étapes :</h3>
-    <div class="row mt-2">
+    <div class="row mt-2" id="step">
     <% @recipe.steps.each do |step| %>
       <div class="col-12 mt-2">
         <%= step.number %> - <%= step.content %>

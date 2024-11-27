@@ -5,8 +5,7 @@ import flatpickr from "flatpickr";
 export default class extends Controller {
   static targets = ["button"]
   connect() {
-    console.log("hello from datepicker controller");
-    //
+
     console.log(this.buttonTarget);
 
   }
