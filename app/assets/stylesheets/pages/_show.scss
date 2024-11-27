@@ -11,12 +11,15 @@
 }
 
 .main-img{
-  position: relative;
+  position: fixed;
+  background-attachment: scroll;
+
 }
 
 #img_main{
   object-fit: cover;
   height: 400px;
+  position: sticky;
 
   // width: 100%;
 }
