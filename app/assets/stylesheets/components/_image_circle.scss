@@ -1,0 +1,63 @@
+
+
+.image-circle {
+  width: 40%;
+  border-radius: 50%;
+  border: 7px solid white;
+  }
+  .shadowed {
+  box-shadow: 10px 10px 35px $light-grey-vege;
+  }
+
+  .parent {
+    position: relative;
+  }
+
+  .image-holder {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .image-holder img{
+    border-radius: 50%;
+    border: 7px solid white;
+  }
+
+  .image-holder img:nth-child(1) {
+    width: 20%;
+    top: -15px;
+    left: -15px;
+  }
+
+  .child-2{
+    width: 22%;
+    top: -50px;
+    left: 50%;
+  }
+
+  .child-3{
+    width: 17%;
+    bottom: 20%;
+    left: 15%;
+  }
+  .child-4{
+    width: 15%;
+    bottom: 40%;
+    left: 30%;
+  }
+
+  .child-5{
+    width: 20%;
+    bottom: 30%;
+    left: 1%;
+  }
+
+
+  .child-6{
+    width: 25%;
+    bottom: 30%;
+    left: 1%;
+  }
