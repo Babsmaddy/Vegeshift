@@ -21,13 +21,14 @@
          <%= image_tag("co2-cloud.png", class: "img-fluid" ) %>
         </div>
       </div>
-       <%= image_tag("timer.png", class: "img-fluid" ) %>
-    <p class="card-text mt-3"><span style="font-weight: bold;"> 30 min</span></p>
-
-    <%= image_tag("difficulty.png", class: "img-fluid" ) %>
-
-     <%= recipe.difficulty %>
-
+      <div class="d-flex justify-content-between">
+       <%= image_tag("timer.png", class: "img-fluid" ) %><%= recipe.time %>
+    <p class="card-text mt-3"><span style="font-weight: bold;"></span></p>
+    </div>
+    <div class="d-flex justify-content-between">
+     <%= image_tag("difficulty.png", class: "img-fluid") %> <%= recipe.difficulty %>
+        <p class="card-text mt-3"><span style="font-weight: bold;"></span></p>
+    </div>
     <div class="text-center mt-3">
       <a href="#" class="button-veggie px-4 py_2">Go</a>
     </div>
