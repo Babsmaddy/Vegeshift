@@ -2,7 +2,7 @@
   <%= image_tag("frisbee.jpg", id:"img_main") %>
 </div>
 <div class="content">
-  <div class="container px-5">
+  <div class="container px-4">
     <div class="mt-3 mb-2">
       <hr id="popup">
     </div>
@@ -46,7 +46,15 @@
     </div>
     <div class="col-6 mt-2">
         Coût en Co2 :
-        <%= @recipe.co2 %> g
+        <% co2_sum =[] %>
+        <% co2_sum = @recipe.ingredients.map do |ingredient| %>
+          <% if ingredient.co2.nil? %>
+            <% 100 %>
+          <% else %>
+            <% ingredient.co2 %>
+          <% end %>
+        <% end %>
+        <%= co2_sum.sum %> g
     </div>
   </div>
   <hr>
@@ -56,6 +64,24 @@
   <hr>
   <div>
     <h3>Ingredients</h3>
+    <div class="row mt-2">
+    <% @recipe.ingredients.each do |ingredient| %>
+      <div class="col-6 gap-2"><i class="fa-regular fa-circle-check text-primary"></i> <%= ingredient.name %>
+      </div>
+
+    <% end %>
+    </div>
   </div>
+ <hr>
+   <div>
+    <h3>Étapes :</h3>
+    <div class="row mt-2">
+    <% @recipe.steps.each do |step| %>
+      <div class="col-12 mt-2">
+        <%= step.number %> - <%= step.content %>
+      </div>
+    <% end %>
+    </div>
   </div>
+</div>
 </div>

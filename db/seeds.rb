@@ -107,7 +107,7 @@ ingredients = [
 ]
 
 ingredients.each do |ingredient|
-  Ingredient.create!(name: ingredient[:name], co2: ingredient[:co2])
+  ingredient_create = Ingredient.create!(name: ingredient[:name], co2: ingredient[:co2])
 end
 
 puts "#{ingredients.size} ingrédients ont été créés avec succès !"
@@ -115,30 +115,47 @@ puts "#{ingredients.size} ingrédients ont été créés avec succès !"
 
 # # Seed recipes
 recipes = [
-{ name:  "Tarte aux abricots", time: 30, difficulty: 1, cost: 3, vegetal: true, co2: 100, ingredients: ["abricots", "beurre", "farine", "sucre"] },
-{ name:  "Poulet aux carottes", time: 45, difficulty: 1, cost: 1, vegetal: false, co2: 600, ingredients: ["poulet", " carottes", " ail", " épices"] },
-{ name:  "Velouté de courgettes", time: 20, difficulty: 2, cost: 2, vegetal: true, co2: 80, ingredients: ["Courgettes", " basilic", " lait"] },
-{ name:  "Ratatouille", time: 10, difficulty: 1, cost: 1, vegetal: true, co2: 120, ingredients: ["Aubergines", " courgettes", " poivrons", " tomates"] },
-{ name:  "Gratin de brocolis", time: 30, difficulty: 3, cost: 2, vegetal: true, co2: 100, ingredients: ["Brocolis", " fromage", " crème"] },
-{ name:  "Curry de pois chiches", time: 45, difficulty: 2, cost: 1, vegetal: true, co2: 200, ingredients: ["Pois chiches", " lait de coco", " curry"] },
-{ name:  "Salade d'avocat et grenade", time: 20, difficulty: 3, cost: 3, vegetal: true, co2: 200, ingredients: ["Avocat", " grenade", " laitue"] },
-{ name:  "Soupe de carottes", time: 10, difficulty: 1, cost: 1, vegetal: true, co2: 30, ingredients: ["Carottes", " oignon", " épices"] },
-{ name:  "Pizza aux légumes", time: 60, difficulty: 3, cost: 2, vegetal: true, co2: 100, ingredients: ["Aubergines", " courgettes", " tomates", " fromage"] },
-{ name:  "Poêlée de champignons et épinards", time: 120, difficulty: 2, cost: 3, vegetal: true, co2: 60, ingredients: ["Champignons", " épinards", " ail"] },
-{ name:  "Poulet au curry", time: 45, difficulty: 2, cost: 1, vegetal: false, co2: 550, ingredients: ["Poulet", " curry", " lait de coco"] },
+  { name: "Tarte aux abricots", time: 30, difficulty: 1, cost: 3, vegetal: true, co2: 100, ingredients: [{ name: "abricot", quantity: 500 }, { name: "beurre", quantity: 100 }, { name: "farine", quantity: 200 }, { name: "sucre", quantity: 50 }], steps: [{ number: 1, content: "Préchauffez le four à 180°C." }, { number: 2, content: "Préparez une pâte brisée avec le beurre, la farine et un peu d'eau." }, { number: 3, content: "Étalez la pâte dans un moule et piquez le fond avec une fourchette." }, { number: 4, content: "Disposez les abricots coupés en deux sur la pâte." }, { number: 5, content: "Saupoudrez de sucre et enfournez pendant 30 minutes." }] },
+  { name: "Poulet aux carottes", time: 45, difficulty: 1, cost: 1, vegetal: false, co2: 600, ingredients: [{ name: "poulet", quantity: 300 }, { name: "carotte", quantity: 200 }, { name: "ail", quantity: 10 }, { name: "épices", quantity: 5 }], steps: [{ number: 1, content: "Épluchez et coupez les carottes en rondelles." }, { number: 2, content: "Faites revenir le poulet dans une cocotte avec un peu d'huile." }, { number: 3, content: "Ajoutez l'ail émincé et les carottes." }, { number: 4, content: "Saupoudrez d'épices et mélangez bien." }, { number: 5, content: "Couvrez et laissez mijoter pendant 30 minutes." }] },
+  { name: "Velouté de courgettes", time: 20, difficulty: 2, cost: 2, vegetal: true, co2: 80, ingredients: [{ name: "courgettes", quantity: 400 }, { name: "basilic", quantity: 10 }, { name: "lait", quantity: 250 }], steps: [{ number: 1, content: "Lavez et coupez les courgettes en morceaux." }, { number: 2, content: "Faites-les cuire dans une casserole avec un peu d'eau." }, { number: 3, content: "Ajoutez le basilic et mixez le tout." }, { number: 4, content: "Incorporez le lait et mélangez." }, { number: 5, content: "Servez chaud avec un peu de basilic frais en décoration." }] },
+  { name: "Ratatouille", time: 10, difficulty: 1, cost: 1, vegetal: true, co2: 120, ingredients: [{ name: "aubergine", quantity: 300 }, { name: "courgette", quantity: 300 }, { name: "poivron", quantity: 200 }, { name: "tomate", quantity: 400 }], steps: [{ number: 1, content: "Coupez tous les légumes en dés." }, { number: 2, content: "Faites chauffer de l'huile dans une poêle." }, { number: 3, content: "Ajoutez les légumes et faites-les revenir." }, { number: 4, content: "Assaisonnez avec du sel, du poivre et des herbes de Provence." }, { number: 5, content: "Laissez mijoter à feu doux pendant 20 minutes." }] },
+  { name: "Gratin de brocolis", time: 30, difficulty: 3, cost: 2, vegetal: true, co2: 100, ingredients: [{ name: "brocolis", quantity: 500 }, { name: "fromage", quantity: 150 }, { name: "crème", quantity: 200 }], steps: [{ number: 1, content: "Préchauffez le four à 200°C." }, { number: 2, content: "Faites cuire les brocolis à la vapeur." }, { number: 3, content: "Disposez les brocolis dans un plat à gratin." }, { number: 4, content: "Ajoutez la crème et le fromage râpé." }, { number: 5, content: "Enfournez pendant 20 minutes jusqu'à ce que le dessus soit doré." }] },
+  { name: "Curry de pois chiches", time: 45, difficulty: 2, cost: 1, vegetal: true, co2: 200, ingredients: [{ name: "pois chiches", quantity: 400 }, { name: "lait de coco", quantity: 250 }, { name: "curry", quantity: 10 }], steps: [{ number: 1, content: "Égouttez les pois chiches et rincez-les." }, { number: 2, content: "Faites chauffer un peu d'huile dans une casserole." }, { number: 3, content: "Ajoutez le curry et faites-le revenir brièvement." }, { number: 4, content: "Incorporez les pois chiches et le lait de coco." }, { number: 5, content: "Laissez mijoter à feu doux pendant 20 minutes." }] },
+  { name: "Salade d'avocat et grenade", time: 20, difficulty: 3, cost: 3, vegetal: true, co2: 200, ingredients: [{ name: "avocat", quantity: 200 }, { name: "grenade", quantity: 150 }, { name: "laitue", quantity: 100 }], steps: [{ number: 1, content: "Lavez la laitue et essorez-la." }, { number: 2, content: "Coupez les avocats en tranches." }, { number: 3, content: "Égrenez la grenade." }, { number: 4, content: "Mélangez le tout dans un saladier." }, { number: 5, content: "Ajoutez une vinaigrette selon votre goût." }] },
+  { name: "Soupe de carottes", time: 10, difficulty: 1, cost: 1, vegetal: true, co2: 30, ingredients: [{ name: "carotte", quantity: 300 }, { name: "oignon", quantity: 100 }, { name: "épices", quantity: 5 }], steps: [{ number: 1, content: "Épluchez et coupez les carottes en morceaux." }, { number: 2, content: "Émincez l'oignon." }, { number: 3, content: "Faites revenir l'oignon dans une casserole." }, { number: 4, content: "Ajoutez les carottes et couvrez d'eau." }, { number: 5, content: "Laissez cuire, puis mixez la soupe." }] },
+  { name: "Pizza aux légumes", time: 60, difficulty: 3, cost: 2, vegetal: true, co2: 100, ingredients: [{ name: "aubergine", quantity: 200 }, { name: "courgette", quantity: 200 }, { name: "tomate", quantity: 300 }, { name: "fromage", quantity: 150 }], steps: [{ number: 1, content: "Préchauffez le four à 220°C." }, { number: 2, content: "Étalez la pâte à pizza sur une plaque." }, { number: 3, content: "Garnissez la pizza avec les légumes tranchés." }, { number: 4, content: "Ajoutez le fromage râpé." }, { number: 5, content: "Enfournez pendant 20 minutes." }] },
+  { name: "Poêlée de champignons et épinards", time: 120, difficulty: 2, cost: 3, vegetal: true, co2: 60, ingredients: [{ name: "champignon", quantity: 300 }, { name: "épinard", quantity: 200 }, { name: "ail", quantity: 10 }], steps: [{ number: 1, content: "Lavez les épinards et émincez l'ail." }, { number: 2, content: "Faites chauffer un peu d'huile dans une poêle." }, { number: 3, content: "Ajoutez les champignons tranchés et faites-les revenir." }, { number: 4, content: "Incorporez les épinards et l'ail." }, { number: 5, content: "Laissez cuire jusqu'à ce que les épinards soient tendres." }] },
+  { name: "Poulet au curry", time: 45, difficulty: 2, cost: 1, vegetal: false, co2: 550, ingredients: [{ name: "poulet", quantity: 300 }, { name: "curry", quantity: 10 }, { name: "lait de coco", quantity: 250 }], steps: [{ number: 1, content: "Coupez le poulet en morceaux." }, { number: 2, content: "Faites chauffer un peu d'huile dans une poêle." }, { number: 3, content: "Ajoutez le curry et faites-le revenir brièvement." }, { number: 4, content: "Incorporez le poulet et faites-le dorer." }, { number: 5, content: "Ajoutez le lait de coco et laissez mijoter 25 minutes." }] }
 ]
 
 
+
 recipes.each do |recipe|
-  Recipe.create!(
+  recipe_obj = Recipe.create!(
     name: recipe[:name],
     time: recipe[:time],
     difficulty: recipe[:difficulty],
     cost: recipe[:cost],
     vegetal: recipe[:vegetal],
-    co2: recipe[:co2],
+    co2: recipe[:co2]
+  )
+  recipe[:steps].each do |step|
+    Step.create!(
+      number: step[:number],
+      content: step[:content],
+      recipe: recipe_obj
     )
+  end
+  recipe[:ingredients].each do |ingredient|
+    ingredient_obj = Ingredient.where("name ILIKE ?", ingredient[:name]).first_or_create(name: ingredient[:name])
+    RecipeIngredient.create!(
+      recipe: recipe_obj,
+      ingredient: ingredient_obj,
+      quantity: ingredient[:quantity]
+    )
+  end
 end
+
 
 puts "#{recipes.size} recettes ont été créées avec succès !"
 
