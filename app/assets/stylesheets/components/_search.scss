@@ -1,0 +1,11 @@
+.search {
+  width: 85%;
+}
+
+.search:focus-within {
+  box-shadow: 0 0 0 0.2rem red;
+}
+
+.form-control:focus {
+box-shadow: none;
+}
