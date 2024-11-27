@@ -8,9 +8,7 @@ class FavoritesController < ApplicationController
     if favorite.save
       redirect_to recipe_path(@recipe)
     else
-      render " ", status: :unprocessable_entity
+      render "", status: :unprocessable_entity
     end
-
-
   end
 end
