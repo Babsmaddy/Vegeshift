@@ -1,0 +1,29 @@
+.content{
+  background-color: white;
+  height: 100vh;
+  border-radius: 45px;
+  position: absolute;
+  top: 350px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  z-index: 1;
+}
+
+.main-img{
+  position: relative;
+}
+
+#img_main{
+  object-fit: cover;
+  height: 400px;
+
+  // width: 100%;
+}
+
+#popup{
+  border: 5px solid $dark-blue-vege;
+  border-radius: 50px;
+  width: 40px;
+  margin: auto;
+}

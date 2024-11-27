@@ -1,0 +1,61 @@
+<div class="main-img">
+  <%= image_tag("frisbee.jpg", id:"img_main") %>
+</div>
+<div class="content">
+  <div class="container px-5">
+    <div class="mt-3 mb-2">
+      <hr id="popup">
+    </div>
+  <div class="text-center">
+    <h2><%= @recipe.name %></h2>
+  </div>
+  <div class="row">
+    <div class="col-6">
+        Temps :
+        <i class="fa-regular fa-clock"></i>
+        <%= @recipe.time %> mn
+      </div>
+    <div class="col-6">
+        Difficulté :
+        <% if @recipe.difficulty == 1 %>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-regular fa-star"></i>
+          <i class="fa-regular fa-star"></i>
+        <% elsif @recipe.difficulty == 3 %>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        <% else %>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-regular fa-star"></i>
+        <% end %>
+    </div>
+    <div class="col-6 mt-2">
+        Coût :
+        <% if @recipe.cost == 1 %>
+          <i class="fa-solid fa-euro-sign"></i>
+        <% elsif @recipe.cost == 3 %>
+          <i class="fa-solid fa-euro-sign"></i>
+          <i class="fa-solid fa-euro-sign"></i>
+          <i class="fa-solid fa-euro-sign"></i>
+        <% else %>
+          <i class="fa-solid fa-euro-sign"></i>
+          <i class="fa-solid fa-euro-sign"></i>
+        <% end %>
+    </div>
+    <div class="col-6 mt-2">
+        Coût en Co2 :
+        <%= @recipe.co2 %> g
+    </div>
+  </div>
+  <hr>
+    <div class="text-center">
+      <a href="#" class="button-veggie-100">Ajouter à ma semaine</a>
+    </div>
+  <hr>
+  <div class="text-center">
+    <h3>Ingredients</h3>
+  </div>
+  </div>
+</div>

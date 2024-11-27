@@ -5,6 +5,7 @@
   bottom: 0;
   width: 100%;
   color: $gray;
+  z-index: 2;
   .active{
    color: $primary;
   }
