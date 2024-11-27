@@ -1,24 +1,5 @@
 <div class="container">
 
-<% @recipes.each do |recipe| %>
-<div class="row row-cols-1 row-cols-2 g-3 mb-4">
-  <div class="card rounded m-3">
-  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-  <div class="row align-items-center">
-    <h5 class="col-md-6 card-title text-uppercase" style="font-weight: bold;">recipe</h5>
-    <div class="col-md-6 text-md-end">
-         <%= image_tag("co2-cloud.png", class: "img-fluid" ) %>
-        </div>
-      </div>
-    <p class="card-text mt-3">Durée:<span style="font-weight: bold;"> 30 min</span></p>
-    <div class="text-center mt-3">
-      <a href="#" class="button-veggie px-4 py_2">Go</a>
-    </div>
-  </div>
-</div>
-</div>
-<% end %>
 
 <div class="d-flex justify-content-center mt-4">
   <div class="input-group" style="width: 50%;">
@@ -32,4 +13,26 @@
   </div>
     <div class="h4 pb-4 mb-4 border-bottom border-5">
   </div>
+
+<div class="row row-cols-1 row-cols-sm-2 g-3 mb-4">
+<% @recipes.each do |recipe| %>
+<div class="col-6">
+  <div class="card rounded m-3">
+  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+  <div class="row align-items-center">
+    <h5 class="col-6 card-title text-uppercase" style="font-weight: bold;">recipe</h5>
+    <div class="col-6 text-end">
+         <%= image_tag("co2-cloud.png", class: "img-fluid" ) %>
+        </div>
+      </div>
+    <p class="card-text mt-3">Durée:<span style="font-weight: bold;"> 30 min</span></p>
+    <div class="text-center mt-3">
+      <a href="#" class="button-veggie px-4 py_2">Go</a>
+    </div>
+  </div>
+  </div>
+</div>
+<% end %>
+</div>
 </div>
