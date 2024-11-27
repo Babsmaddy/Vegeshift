@@ -1,0 +1,21 @@
+.search {
+  width: 85%;
+  background-color: $very-light-grey-vege;
+}
+
+.search:focus-within {
+  box-shadow: 0 0 0 0.1rem $grey-vege;
+  background-color: $very-light-grey-vege;
+}
+
+.form-control:focus {
+box-shadow: none;
+color: $grey-vege;
+background-color: $very-light-grey-vege;
+}
+
+.icon {
+color: $dark-blue-vege;
+background-color: $very-light-grey-vege;
+
+}
