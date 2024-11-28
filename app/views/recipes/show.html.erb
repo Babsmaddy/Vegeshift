@@ -46,15 +46,7 @@
     </div>
     <div class="col-6 mt-2">
         Coût en Co2 :
-        <% co2_sum =[] %>
-        <% co2_sum = @recipe.ingredients.map do |ingredient| %>
-          <% if ingredient.co2.nil? %>
-            <% 100 %>
-          <% else %>
-            <% ingredient.co2 %>
-          <% end %>
-        <% end %>
-        <%= co2_sum.sum %> g
+       <%= @recipe.co2 %>g
     </div>
   </div>
   <hr>
