@@ -12,7 +12,7 @@ class FavoritesController < ApplicationController
 
   def destroy
     @recipe = Recipe.find(params[:recipe_id])
-    @favorite = Favorite.find(params[:id])
+    @favorite = current_user.favorites.find_by(recipe: @recipe)
     if @favorite.destroy
       redirect_to recipe_path(@recipe), status: :ok
     end
