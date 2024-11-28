@@ -1,4 +1,6 @@
 <div class="main-img">
+
+  <i class="<%= @favorite.nil? ? "fa-regular" : "fa-solid" %> fa-heart" data-controller="favorites" data-action="click->favorites#fire" data-favorites-post-value="<%= recipe_favorites_path(@recipe) %>"  data-favorites-delete-value="<%= recipe_favorite_path(@recipe) %>"id="heart"></i>
   <%= image_tag("frisbee.jpg", id:"img_main") %>
 </div>
 <div class="content">
@@ -64,7 +66,6 @@
     </button>
   </div>
 
-<% raise %>
     <!-- Modal -->
     <div class="modal fade" id="modalCalendar" tabindex="-1" aria-labelledby="modalCalendarLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">

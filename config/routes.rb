@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
   get "/components", to: "pages#components"
-  
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :recipes, only: [:create, :index, :show] do
+  resources :recipes, only: [:create, :index, :show, :new] do
     resources :dailies, only: [:create, :destroy]
     resources :favorites, only: [:create, :destroy]
   end
