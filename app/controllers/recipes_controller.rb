@@ -14,7 +14,14 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.new(recipe_params)
+    # vérifier si c'est .present?
+    @gpt_response = Recipe.content(encode_image) if params[:temp_photo].present?
+    @gpt_response = Recipe.content(params[:url]) if params[:url].present?
+    @gpt_response = Recipe.content(params[:title]) if params[:title].present?
+
+
+    @recipe = Recipe.create_recipe
+
     if @recipe.save
       redirect_to recipes_path
     else
@@ -24,8 +31,8 @@ class RecipesController < ApplicationController
 
   private
 
-  def recipe_params
-    params.require(:recipe).permit(:name, :photo)
+  def encode_image
+    file_content = File.read(params[:temp_photo].tempfile)
+    Base64.strict_encode64(file_content)
   end
-
 end
