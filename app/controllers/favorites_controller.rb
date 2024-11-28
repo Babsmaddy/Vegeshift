@@ -1,14 +1,15 @@
 class FavoritesController < ApplicationController
+  skip_before_action :verify_authenticity_token
 
   def create
     @recipe = Recipe.find(params[:recipe_id])
-    #créer le favoris en l'associant à l'utilisateur
-    @favorite = current_user.favorites.new(recipe: recipe)
+    @favorite = Favorite.new(user: current_user, recipe: @recipe)
+    @favorite.save
+  end
 
-    if favorite.save
-      redirect_to recipe_path(@recipe)
-    else
-      render "", status: :unprocessable_entity
-    end
+  def destroy
+    @recipe = Recipe.find(params[:recipe_id])
+    @favorite = Favorite.find(params[:id])
+    @favorite.destroy
   end
 end

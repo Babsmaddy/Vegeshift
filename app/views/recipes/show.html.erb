@@ -1,5 +1,6 @@
 <div class="main-img">
-  <a href="#"><i class="fa-regular fa-heart" id="heart"></i></a>
+
+  <i class="<%= @favorite.nil? ? "fa-regular" : "fa-solid" %> fa-heart" data-controller="favorites" data-action="click->favorites#fire" data-favorites-post-value="<%= recipe_favorites_path(@recipe) %>"  data-favorites-delete-value="<%= recipe_favorite_path(@recipe, @favorite) unless @favorite.nil? %>"id="heart"></i>
   <%= image_tag("frisbee.jpg", id:"img_main") %>
 </div>
 <div class="content">
