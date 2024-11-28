@@ -6,6 +6,7 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @daily = Daily.new
+    # @daily = current_user.dailies.find_by(recipe: @recipe)
     @favorite = current_user.favorites.find_by(recipe: @recipe) || nil
   end
 
@@ -15,17 +16,17 @@ class RecipesController < ApplicationController
 
   def create
     # vérifier si c'est .present?
-    @gpt_response = Recipe.content(encode_image) if params[:temp_photo].present?
-    @gpt_response = Recipe.content(params[:url]) if params[:url].present?
-    @gpt_response = Recipe.content(params[:title]) if params[:title].present?
+    @gpt_response = Recipe.call_gpt(encode_image) if params[:temp_photo].present?
+    @gpt_response = Recipe.call_gpt(params[:url]) if params[:url].present?
+    @gpt_response = Recipe.call_gpt(params[:title]) if params[:title].present?
 
-
-    @recipe = Recipe.create_recipe
-
+    raise
+    @recipe = Recipe.set_recipe(@gpt_response)
     if @recipe.save
-      redirect_to recipes_path
+      redirect_to recipe_path(@recipe)
     else
       render :new, status: :unprocessable_entity
+
     end
   end
 

@@ -1,12 +1,15 @@
 // Specific CSS for your home-page
-.container{
-  height: 100vh;
-  position: relative;
+
+body {
+  padding-bottom: 8vh !important;
+  background-color: white;
 }
 
+
 .logo img{
-  width: 120px;
+  width: 130px;
 }
+
 
 #scanbar{
   position: absolute;
@@ -15,3 +18,7 @@
   right: 0;
 }
 
+.image-home {
+  width: 100%;
+  position: center;
+}
