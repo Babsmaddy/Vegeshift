@@ -6,7 +6,7 @@ export default class extends Controller {
   static targets = ["button"]
   connect() {
 
-    console.log(this.buttonTarget);
+    flatpickr(this.element)
 
   }
 }
