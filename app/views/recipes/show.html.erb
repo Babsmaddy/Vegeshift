@@ -3,7 +3,7 @@
 <% if @recipe&.photo.attached? %>
   <%= cl_image_tag @recipe.photo.key, id:"img_main" %>
 <% else %>
-  <%= image_tag("frisbee.jpg", id:"img_main") %>
+  <%= image_tag("recette.jpg", id:"img_main") %>
 <% end %>
 </div>
 <div class="content">
