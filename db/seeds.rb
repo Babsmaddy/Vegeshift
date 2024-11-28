@@ -139,6 +139,7 @@ recipes.each do |recipe|
     vegetal: recipe[:vegetal],
     co2: recipe[:co2]
   )
+
   recipe[:steps].each do |step|
     Step.create!(
       number: step[:number],

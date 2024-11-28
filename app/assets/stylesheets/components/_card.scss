@@ -53,8 +53,19 @@
   margin-bottom: 0;
 }
 
+.card-recipe-co2 {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+
+  img {
+    width: 30px;
+    height: 30px;
+  }
+
+
 
 .upload-card{
   border: 3px dashed $grey-vege;
   border-radius: 15px;
-}
+
