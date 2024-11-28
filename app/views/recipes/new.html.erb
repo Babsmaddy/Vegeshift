@@ -6,7 +6,7 @@
   <div class="row justify-content-center m-3">
     <h3 class="title row text-center">Trouver une alternative végétale à une recette </h3>
       <div class="search input-group mb-1 border rounded-pill border-1 bg-white">
-        <input type="text" class="form-control border-0 bg-white" placeholder="Entre le nom d'une recette" aria-label="Username" aria-describedby="basic-addon1">
+        <input type="text" class="form-control border rounded-pill border-0 bg-white" placeholder="Entre le nom d'une recette" aria-label="Username" aria-describedby="basic-addon1">
       </div>
   </div>
 
@@ -24,7 +24,7 @@
           <i class="icon-new fa-solid fa-image"></i>
         </div>
        <%= simple_form_for @recipe do |f| %>
-       <%= f.input :photo, as: :file %>
+       <%= f.input :photo, as: :file, label: false %>
        <%= f.submit 'Ajouter mon image', class: "button-form" %>
       <% end %>
     </div>

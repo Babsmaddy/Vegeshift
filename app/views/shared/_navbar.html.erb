@@ -1,31 +1,28 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-vegeshift">
   <div class="container-fluid">
     <%= link_to "/", class: "nav-link active" do %>
-      <i class="fa-solid fa-house"></i>
+      <i class="navbar-icon fa-solid fa-house"></i>
+    <% end %>
+    <%= link_to "#", class: "nav-link" do %>
+      <i class="navbar-icon fa-solid fa-chart-line"></i>
     <% end %>
     <%= link_to recipes_path, class: "nav-link" do %>
-      <i class="fa-solid fa-chart-line"></i>
+      <i class="fa-solid fa-leaf" id="index"></i>
+      <%# <i class="fa-solid fa-expand" id="scan"></i> %>
     <% end %>
     <%= link_to "#", class: "nav-link" do %>
-      <i class="fa-solid fa-expand" id="scan"></i>
+      <i class="navbar-icon fa-solid fa-utensils"></i>
     <% end %>
-    <%= link_to "#", class: "nav-link" do %>
-      <i class="fa-solid fa-magnifying-glass"></i>
-    <% end %>
-    <i class="navbar-toggler fa-solid fa-user" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></i>
+    <i class="navbar-icon fa-solid fa-user" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></i>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Home", "#", class: "nav-link" %>
+          <li class="nav-item">
+            <%= link_to "Ma semaine", "#", class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Messages", "#", class: "nav-link" %>
+            <%= link_to "Mes favoris", "#", class: "nav-link" %>
           </li>
-          <li class="nav-item dropdown">
-          <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
-          </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Action", "#", class: "dropdown-item" %>
               <%= link_to "Another action", "#", class: "dropdown-item" %>
