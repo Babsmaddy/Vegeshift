@@ -33,16 +33,19 @@
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
+
   h5{
     padding: 0.125rem;
     font-size: 1rem;
   }
+
   img{
     padding: 0.125rem;
     width: 40px;
     height: 40px;
     object-fit: cover;
     padding: 0;
+
   a{
     margin: 0.125rem;
   }
@@ -62,4 +65,9 @@
     width: 30px;
     height: 30px;
   }
+}
+
+.upload-card{
+  border: 3px dashed $grey-vege;
+  border-radius: 15px;
 }
