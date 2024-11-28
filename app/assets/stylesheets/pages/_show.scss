@@ -37,3 +37,26 @@
 #step{
   margin-bottom: 7rem;
 }
+
+.fa-regular.fa-heart{
+  color: white;
+}
+
+.fa-solid.fa-heart{
+  color: red
+}
+
+#heart{
+  position:absolute;
+  right: 80px;
+  top: 25px;
+  font-size: 2.5rem;
+  z-index: 1;
+  padding: 0.35rem;
+  border-radius: 10%;
+  background-color: rgba($dark-blue-vege, .2);
+  &:hover {
+    transform: scale(1.1);
+    transition: all ease 500ms;
+  }
+}
