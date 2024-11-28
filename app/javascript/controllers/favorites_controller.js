@@ -11,7 +11,6 @@ export default class extends Controller {
   }
 
   fire(event) {
-    event.preventDefault
     if (event.target.classList.contains("fa-regular")){
 
       event.target.classList.remove("fa-regular")
@@ -23,6 +22,8 @@ export default class extends Controller {
       );
     } else if(event.target.classList.contains("fa-solid")){
       console.log("yo");
+      console.log(this.deleteValue);
+
       event.target.classList.remove("fa-solid")
       event.target.classList.add("fa-regular")
       fetch(this.deleteValue,

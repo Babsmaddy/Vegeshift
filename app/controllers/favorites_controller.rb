@@ -4,12 +4,17 @@ class FavoritesController < ApplicationController
   def create
     @recipe = Recipe.find(params[:recipe_id])
     @favorite = Favorite.new(user: current_user, recipe: @recipe)
-    @favorite.save
+
+    if @favorite.save
+      redirect_to recipe_path(@recipe)
+    end
   end
 
   def destroy
     @recipe = Recipe.find(params[:recipe_id])
     @favorite = Favorite.find(params[:id])
-    @favorite.destroy
+    if @favorite.destroy
+      redirect_to recipe_path(@recipe), status: :ok
+    end
   end
 end
