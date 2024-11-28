@@ -1,32 +1,43 @@
-.navbar-lewagon {
+.navbar-vegeshift {
   justify-content: space-between;
+  font-size: 0.85rem;
   background: white;
   position: fixed;
   bottom: 0;
+  padding: 0;
   width: 100%;
-  color: $gray;
+  // height: 8vh;
+  color: $grey-vege;
   z-index: 2;
   .active{
-   color: $primary;
-  }
+    color: $primary;
+   }
   z-index: 1000;
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar-vegeshift .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.navbar-vegeshift .navbar-toggler{
+  color: $grey-vege;
+  position: fixed;
+  font-size: 1.2rem;
 }
 
-#scan{
-  font-size: 4rem;
+.navbar-vegeshift .navbar-icon {
+  font-size: 1.2rem;
+  color: $grey-vege;
+
+
+}
+
+#index{
+  font-size: 2rem;
   color: white;
   border-radius: 50%;
   background-color: $primary;
   padding: 15px;
-  position: absolute;
-  bottom: 10px;
-  right: 40%;
+  position: relative;
+  bottom: 15px;
 }

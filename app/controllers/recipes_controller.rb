@@ -6,6 +6,8 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @daily = Daily.new
+    # @daily = current_user.dailies.find_by(recipe: @recipe)
+    @favorite = current_user.favorites.find_by(recipe: @recipe) || nil
   end
 
   def new
@@ -13,6 +15,7 @@ class RecipesController < ApplicationController
   end
 
   def create
+
     @recipe = Recipe.new(recipe_params)
 
     if @recipe.save
@@ -22,6 +25,7 @@ class RecipesController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
 
   def update
     @recipe = Recipe.find(params[:id])
@@ -40,4 +44,5 @@ class RecipesController < ApplicationController
   def recipe_params
     params.require(:recipe).permit(:name, :difficulty, :time, :co2)
   end
+
 end
