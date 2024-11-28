@@ -16,11 +16,13 @@ class RecipesController < ApplicationController
 
   def create
     # vérifier si c'est .present?
+    # params[:temp_photo].attached?
+    # raise
     @gpt_response = Recipe.call_gpt(encode_image) if params[:temp_photo].present?
     @gpt_response = Recipe.call_gpt(params[:url]) if params[:url].present?
     @gpt_response = Recipe.call_gpt(params[:title]) if params[:title].present?
 
-    raise
+
     @recipe = Recipe.set_recipe(@gpt_response)
     if @recipe.save
       redirect_to recipe_path(@recipe)

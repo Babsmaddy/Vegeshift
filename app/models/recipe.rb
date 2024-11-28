@@ -6,9 +6,6 @@ class Recipe < ApplicationRecord
   has_many :ingredients, through: :recipe_ingredients
   has_one_attached :photo
 
-
-
-
   def self.call_gpt(upload)
     client = OpenAI::Client.new
     chatgpt_response = client.chat(parameters: {
