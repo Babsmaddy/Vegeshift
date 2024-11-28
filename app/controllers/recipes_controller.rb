@@ -6,6 +6,7 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @daily = Daily.new
+    # @daily = current_user.dailies.find_by(recipe: @recipe)
     @favorite = current_user.favorites.find_by(recipe: @recipe) || nil
   end
 
