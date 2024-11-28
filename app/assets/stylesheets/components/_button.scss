@@ -3,7 +3,7 @@
   border-radius: 10rem;
   color: white;
   background: $primary;
-  padding: .5rem 1.75rem;
+  padding: .75rem 1.75rem;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -13,10 +13,11 @@
 }
 
 .button-veggie-100{
+  border: none;
   background: $primary;
   border-radius: 10rem;
   color: white;
-  padding: .5rem 1.75rem;
+  padding: .75rem 1.75rem;
   text-decoration: none;
   display: inline-block;
   width: 85%;

@@ -1,8 +1,17 @@
 // Specific CSS for your home-page
 .container{
+  height: 100vh;
   position: relative;
 }
 
 .logo img{
   width: 120px;
 }
+
+#scanbar{
+  position: absolute;
+  bottom: 70px;
+  left: 0;
+  right: 0;
+}
+
