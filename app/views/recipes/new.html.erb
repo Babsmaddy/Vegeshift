@@ -1,5 +1,51 @@
+<div class="container justify-content-center bg-white">
+  <div class="cancel row">
+    <%= link_to "Annuler", root_path, class: "text-decoration-none text-danger" %>
+  </div>
 
-<%= simple_form_for @recipe do |f| %>
-  <%= f.input :name %>
-  <%= f.button :submit %>
-<% end %>
+  <div class="row justify-content-center m-3">
+    <h3 class="title row text-center">Trouver une alternative végétale à une recette </h3>
+      <div class="search input-group mb-1 border rounded-pill border-1 bg-white">
+        <input type="text" class="form-control border-0 bg-white" placeholder="Entre le nom d'une recette" aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+  </div>
+
+  <div class="row text-center text-danger mt-1">
+    <p>ou </p>
+  </div>
+
+  <div class="title-2 row text-left">
+    <h4>Photo de la recette </h4>
+  </div>
+
+  <div class="row m-1">
+    <div class="upload-card p-2 text-center">
+        <div class="icon-new text-center bg-white">
+          <i class="icon-new fa-solid fa-image"></i>
+        </div>
+       <%= simple_form_for @recipe do |f| %>
+       <%= f.input :photo, as: :file %>
+       <%= f.submit 'Ajouter mon image', class: "button-form" %>
+      <% end %>
+    </div>
+  </div>
+
+
+  <div class="row text-center text-danger mt-1">
+    <p>ou </p>
+  </div>
+
+  <div class="title-2 row text-left">
+    <h4>Lien de la recette </h4>
+  </div>
+  <div class="row justify-content-center">
+    <div class="search input-group mb-1 border rounded-pill border-1 bg-white">
+      <input type="text" class="form-control border rounded-pill border-0 bg-white" placeholder="Entrer le lien de la recette" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+  </div>
+  <div class="row justify-content-center mt-3">
+    <div class="text-center mt-1 p-0">
+      <a href="#" class="button-veggie-100">Je végétalise !</a>
+    </div>
+  </div>
+</div>
