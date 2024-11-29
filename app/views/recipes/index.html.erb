@@ -20,24 +20,23 @@
     <div class="col-6">
       <div class="card rounded m-3">
         <div class="position-relative">
-          <img
-            src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg"
-            class="card-img-top"
-            style="border-radius: 20px"
-            alt="<% recipe.name %>"
-          >
-          <div class="card-recipe-co2 d-flex align-items-center">
-            <%= image_tag("co2-cloud.png", class: "img-fluid") %>
-            <%= recipe.co2 %>g
+           <% if recipe.photo.attached? %>
+              <%= cl_image_tag recipe.photo.key, class: "card-img-top", style: "width: 100%; height: auto;" %>
+          <% else %>
+              <%= image_tag "home_recipe_4.png", class: "card-img-top", style: "width: 100%; height: auto;" %>
+          <% end  %>
+            <div class="card-recipe-co2 d-flex align-items-center">
+              <%= image_tag("co2-cloud.png", class: "img-fluid") %>
+              <%= recipe.co2 %>g
+            </div>
           </div>
-        </div>
+
         <div class="card-body">
           <div class="row align-items-center">
             <div class="text-center mb-3">
               <h2
                 class="text-uppercase"
-                style="font-weight: semi-bold; font-size: 1rem;"
-              >
+                style="font-weight: semi-bold; font-size: 1rem;">
                 <%= recipe.name %>
               </h2>
             </div>
@@ -58,6 +57,7 @@
               </p>
             </div>
           </div>
+          
           <div class="text-center mt-3">
             <%= link_to "Go", recipe_path(recipe), class: "button-veggie px-4 py_2" %>
           </div>
