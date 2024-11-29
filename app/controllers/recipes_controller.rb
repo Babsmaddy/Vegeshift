@@ -18,7 +18,7 @@ class RecipesController < ApplicationController
     # vérifier si c'est .present?
     # params[:temp_photo].attached?
     # raise
-    @gpt_response = Recipe.call_gpt(encode_image) if params[:temp_photo].present?
+    @gpt_response = Recipe.photo_gpt(encode_image) if params[:temp_photo].present?
     @gpt_response = Recipe.call_gpt(params[:url]) if params[:url].present?
     @gpt_response = Recipe.call_gpt(params[:title]) if params[:title].present?
 
@@ -39,7 +39,7 @@ class RecipesController < ApplicationController
     file_content = File.read(params[:temp_photo].tempfile)
     Base64.strict_encode64(file_content)
   end
-  
+
   def update
     @recipe = Recipe.find(params[:id])
 
