@@ -60,11 +60,31 @@
   position: absolute;
   bottom: 10px;
   right: 10px;
+  border-radius: 45%;
+  background-color: #1FCC79;
+  padding: 2,5rem;
 
   img {
     width: 30px;
     height: 30px;
   }
+}
+
+.d-flex{
+  gap: 1rem;
+  display: flex;
+
+.icon-container{
+  display: flex;
+  align-items: center;
+  gap: 0,5rem
+}
+
+img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
 }
 
 .upload-card{
