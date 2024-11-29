@@ -29,7 +29,6 @@ class RecipesController < ApplicationController
 
     else
       render :new, status: :unprocessable_entity
-
     end
   end
 
@@ -39,7 +38,8 @@ class RecipesController < ApplicationController
   def encode_image
     file_content = File.read(params[:temp_photo].tempfile)
     Base64.strict_encode64(file_content)
-
+  end
+  
   def update
     @recipe = Recipe.find(params[:id])
 
@@ -51,8 +51,6 @@ class RecipesController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
-
-  private
 
   def recipe_params
     params.require(:recipe).permit(:name, :difficulty, :time, :co2)
