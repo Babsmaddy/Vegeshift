@@ -8,7 +8,17 @@ class Recipe < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :ingredients, through: :recipe_ingredients
   has_one_attached :photo
+  include PgSearch::Model
 
+
+  pg_search_scope :global_search,
+  against: [ :name ],
+  associated_against: {
+    ingredients: [ :name ]
+  },
+  using: {
+    tsearch: { prefix: true }
+  }
   after_create :photo_gpt
 
 
