@@ -5,7 +5,16 @@ class Recipe < ApplicationRecord
   has_many :steps
   has_many :ingredients, through: :recipe_ingredients
   has_one_attached :photo
+  include PgSearch::Model
 
+  pg_search_scope :global_search,
+  against: [ :name ],
+  associated_against: {
+    ingredients: [ :name ]
+  },
+  using: {
+    tsearch: { prefix: true }
+  }
 
   def self.call_gpt(upload)
     client = OpenAI::Client.new
@@ -23,7 +32,6 @@ class Recipe < ApplicationRecord
           }]
       })
       return JSON.parse(chatgpt_response["choices"][0]["message"]["content"].lstrip)
-
   end
 
   def self.set_recipe(gpt)
@@ -54,7 +62,7 @@ class Recipe < ApplicationRecord
     end
     @recipe
   end
-  
+
   def sum_total_co2
     # self.ingredients.sum {|ingredient| ingredient.co2 || 100}
     return if ingredients.blank?

@@ -1,6 +1,9 @@
 class RecipesController < ApplicationController
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.where(vegetal: true)
+    if params[:query].present?
+      @recipes = @recipes.global_search(params[:query])
+    end
   end
 
   def show
@@ -39,7 +42,7 @@ class RecipesController < ApplicationController
     file_content = File.read(params[:temp_photo].tempfile)
     Base64.strict_encode64(file_content)
   end
-  
+
   def update
     @recipe = Recipe.find(params[:id])
 
@@ -53,6 +56,6 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:name, :difficulty, :time, :co2)
+    params.require(:recipe).permit(:name, :difficulty, :ingredients, :time, :co2)
   end
 end
