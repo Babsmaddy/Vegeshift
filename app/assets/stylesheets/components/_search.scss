@@ -1,7 +1,8 @@
 .search {
   width: 85%;
   background-color: $very-light-grey-vege;
-  padding: 0.5rem 0;
+  padding: 0.2rem 0;
+  box-shadow: 0 0 0 0.1rem $grey-vege;
 }
 
 .search:focus-within {
@@ -18,5 +19,6 @@ background-color: $very-light-grey-vege;
 .icon {
 color: $dark-blue-vege;
 background-color: $very-light-grey-vege;
-
+border-radius: 50%;
+margin-left: 1px;
 }
