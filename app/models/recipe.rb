@@ -1,10 +1,13 @@
 require 'json'
+require "open-uri"
 
 class Recipe < ApplicationRecord
   has_many :recipe_ingredients
   has_many :steps
   has_many :ingredients, through: :recipe_ingredients
   has_one_attached :photo
+
+  after_create :photo_gpt
 
 
   def self.call_gpt(upload)
@@ -21,9 +24,25 @@ class Recipe < ApplicationRecord
           Merci
           "
           }]
-      })
+    })
       return JSON.parse(chatgpt_response["choices"][0]["message"]["content"].lstrip)
+  end
 
+  def photo_gpt
+    client = OpenAI::Client.new
+    response = client.images.generate(
+      parameters: {
+        prompt: "A recipe image of #{name} with this ingredients #{self.ingredients.pluck(:name).join(',')}",
+        size: "1024x1024",
+      }
+    )
+
+    url = response["data"][0]["url"]
+    file = URI.parse(url).open
+
+    photo.purge if photo.attached?
+    photo.attach(io: file, filename: "image of #{name}.jpg", content_type: "image/png")
+    return photo
   end
 
   def self.set_recipe(gpt)
@@ -54,7 +73,7 @@ class Recipe < ApplicationRecord
     end
     @recipe
   end
-  
+
   def sum_total_co2
     # self.ingredients.sum {|ingredient| ingredient.co2 || 100}
     return if ingredients.blank?

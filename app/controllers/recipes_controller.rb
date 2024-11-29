@@ -22,8 +22,8 @@ class RecipesController < ApplicationController
     @gpt_response = Recipe.call_gpt(params[:url]) if params[:url].present?
     @gpt_response = Recipe.call_gpt(params[:title]) if params[:title].present?
 
-
     @recipe = Recipe.set_recipe(@gpt_response)
+    # @recipe = Recipe.photo_gpt
     if @recipe.save
       redirect_to recipe_path(@recipe)
 
@@ -39,7 +39,7 @@ class RecipesController < ApplicationController
     file_content = File.read(params[:temp_photo].tempfile)
     Base64.strict_encode64(file_content)
   end
-  
+
   def update
     @recipe = Recipe.find(params[:id])
 
