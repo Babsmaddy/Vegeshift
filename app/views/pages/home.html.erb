@@ -22,12 +22,15 @@
       <%= image_tag "home_image_3.png" %>
   </div>
 
+
+
   <div class="row justify-content-center m-2" id="scanbar">
-    <div class="search input-group border rounded-pill border-0">
+      <%= render "/shared/searchbar" %>
+    <%# <div class="search input-group border rounded-pill border-0">
       <div class="input-group-prepend">
         <i class="icon fa fa-search input-group-text border rounded-pill border-0"></i>
       </div>
-      <input type="text" class="form-control rounded-pill border-0 " placeholder="Rechercher une recette veggie" aria-label="Username" aria-describedby="basic-addon1">
-    </div>
+      <input type="text" class="form-control rounded-pill border-0 " placeholder="Rechercher une recette veggie">
+    </div> %>
   </div>
 </div>
