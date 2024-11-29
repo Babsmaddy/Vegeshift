@@ -3,7 +3,9 @@ require "open-uri"
 
 class Recipe < ApplicationRecord
   has_many :recipe_ingredients
-  has_many :steps
+  has_many :steps, dependent: :destroy
+  has_many :dailies, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   has_many :ingredients, through: :recipe_ingredients
   has_one_attached :photo
 
