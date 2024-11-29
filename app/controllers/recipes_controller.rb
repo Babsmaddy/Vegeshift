@@ -26,16 +26,35 @@ class RecipesController < ApplicationController
     @recipe = Recipe.set_recipe(@gpt_response)
     if @recipe.save
       redirect_to recipe_path(@recipe)
+
     else
       render :new, status: :unprocessable_entity
 
     end
   end
 
+
   private
 
   def encode_image
     file_content = File.read(params[:temp_photo].tempfile)
     Base64.strict_encode64(file_content)
+
+  def update
+    @recipe = Recipe.find(params[:id])
+
+    if recipe.update(recipe_params)
+
+      @recipe.sum_total_co2
+      redirect_to recipes_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def recipe_params
+    params.require(:recipe).permit(:name, :difficulty, :time, :co2)
   end
 end
