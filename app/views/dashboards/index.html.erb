@@ -1,11 +1,16 @@
-<div class="text-center">
-  <%= image_tag("recette.jpg", id:"img_main") %>
+<div class="mt-2 text-center">
+  <%= image_tag("recette.jpg", id:"img_main-fav") %>
 </div>
-<div class="content mt-4">
+<div class="text-center">
+  <h2>
+    <%= current_user.email %>
+  </h2>
+</div>
+<div class="content-fav mt-4">
   <div class="pt-3 mb-2">
-    <hr id="popup">
+    <hr id="popup-fav">
   </div>
-  <div class="container px-4">
+  <div class="container-fav px-4">
     <div class="row">
         <ul class="nav nav-pills mb-3 justify-content-around p-0" id="pills-tab" role="tablist">
           <li class="nav-item" role="presentation">
@@ -13,14 +18,44 @@
           </li>
           <div class="vl"></div>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Mes favories</button>
+            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Mes favoris</button>
           </li>
         </ul>
       </div>
-      <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">...</div>
-        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
+      <div>
+        <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <% @dailies %>
+          </div>
+          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+              <div class="row row-cols-1 row-cols-sm-2 g-3 mb-4">
+                <% @favorites.each do |favorite| %>
+                  <div class="col-6">
+                    <div class="card veggie-ronded">
+                      <div class="position-relative">
+                      <%= link_to recipe_path(favorite.recipe) do %>
+                        <% if favorite.recipe.photo.attached? %>
+                            <%= cl_image_tag favorite.recipe.photo.key, crop: :fill, class: "card-img-top veggie-ronded" %>
+                        <% else %>
+                            <%= image_tag "home_recipe_4.png", class: "card-img-top veggie-ronded", style: "width: 100%; height: auto;" %>
+                        <% end %>
+                        <div class="card-body">
+                          <div class="row align-items-center">
+                            <div class="text-center">
+                              <h4 class="text-uppercase" style="font-weight: semi-bold; font-size: 1rem;">
+                                <%= favorite.recipe.name %>
+                              </h4>
+                            </div>
+                          </div>
+                        <% end %>
+                      </div>
+                  </div>
+                 </div>
+                </div>
+              <% end %>
+              </div>
+          </div>
       </div>
-
+      </div>
   </div>
 </div>
