@@ -13,34 +13,68 @@
 .veggie-ronded{
   border-radius: 1rem;
   width: 150px;
+  &:hover .overlay-title{
+    opacity: 1;
+  }
+  &:hover .card-body-fav{
+    opacity: 1;
+  }
+
+
+  a{
+    text-decoration: none;
+    color: $secondary;
+    text-align: center;
+  }
 
   img{
     width: 100%;
     height: 150px;
     object-fit: cover;
+    display: block;
+  }
+  .card-body-fav{
+    position: absolute;
+    bottom: 0;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 100%;
+    transition: .5s ease;
+    opacity:0;
+    text-align: center;
+    h4{
+      font-size: 1rem;
+      color: white;
+    }
   }
   .card-body{
-    align-items: center;
-    cursor: pointer;
-    display: flex;
-    flex-flow: column nowrap;
-    height: 375px;
-    justify-content: center;
-    position: relative;
-    width: 300px;
+    background-color: rgba($secondary, 0.6);
   }
-  &::after {
-    background: rgba(0,0,0,0.7);
-    content: '';
-    height: 100%;
-    opacity: 0;
+  .card-body-dail{
+    border-radius: 1rem 1rem 0 0 ;
     position: absolute;
-    transition: all 300ms ease-in;
+    top: 0;
+    background: $primary;
     width: 100%;
+    transition: .5s ease;
+    text-align: center;
+    h4{
+      font-size: 1rem;
+      color: white;
+    }
   }
-
-  &:hover::after, &:hover .text-uppercase{
-    opacity: 1;
+  .overlay-title{
+    position: absolute;
+    border-radius: 0 0 1rem 1rem ;
+    bottom: 0;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 100%;
+    transition: .5s ease;
+    opacity:0;
+    text-align: center;
   }
 }
 
@@ -48,7 +82,6 @@
   border-left: 2px solid rgba($primary,0.4);
   border-radius: 2rem;
   height: 40px;
-  margin-left: 5px
 }
 
 #popup-fav{

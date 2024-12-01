@@ -4,7 +4,7 @@ import flatpickr from "flatpickr";
 // Connects to data-controller="datepicker"
 export default class extends Controller {
   static targets = ["button"]
-  connect() {
+  connect() {r
     flatpickr(this.element)
 
   }

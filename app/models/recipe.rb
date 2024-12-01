@@ -45,7 +45,7 @@ class Recipe < ApplicationRecord
     response = client.images.generate(
       parameters: {
         prompt: "A recipe image of #{name} with this ingredients #{self.ingredients.pluck(:name).join(',')}",
-        size: "1024x1024",
+        size: "256x256",
       }
     )
 
