@@ -20,9 +20,14 @@
     object-fit: cover;
   }
   .card-body{
-    position: absolute;
-    top: 45px;
-    background-color: rgba($primary,0.4);
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    flex-flow: column nowrap;
+    height: 375px;
+    justify-content: center;
+    position: relative;
+    width: 300px;
   }
   &::after {
     background: rgba(0,0,0,0.7);
@@ -34,7 +39,7 @@
     width: 100%;
   }
 
-  &:hover::after, &:hover .card-body{
+  &:hover::after, &:hover .text-uppercase{
     opacity: 1;
   }
 }
