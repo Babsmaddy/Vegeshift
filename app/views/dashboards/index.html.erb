@@ -1,0 +1,93 @@
+<div class="mt-2 text-center">
+  <%= image_tag("recette.jpg", id:"img_main-fav") %>
+</div>
+<div class="text-center">
+  <h2>
+    <%= current_user.email %>
+  </h2>
+</div>
+<div class="content-fav mt-4">
+  <div class="pt-3 mb-2">
+    <hr id="popup-fav">
+  </div>
+  <div class="container-fav px-4">
+   <hr>
+    <div class="row">
+        <ul class="nav nav-pills justify-content-around p-0" id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="a" role="tab" aria-controls="pills-home" aria-selected="true">Ma semaine</a>
+          </li>
+          <div class="vl"></div>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Mes favoris</a>
+          </li>
+        </ul>
+      </div>
+        <hr>
+      <div>
+        <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+             <div class="row row-cols-1 row-cols-sm-2 g-3 mb-4">
+                <% @dailies.sort_by{|daily| daily.date}.each do |daily| %>
+                  <div class="col-6">
+                    <div class="card veggie-ronded">
+                      <div class="position-relative">
+                        <% if daily.recipe.photo.attached? %>
+                            <%= cl_image_tag daily.recipe.photo.key, crop: :fill, class: "card-img-top veggie-ronded" %>
+                        <% else %>
+                            <%= image_tag "home_recipe_4.png", class: "card-img-top veggie-ronded", style: "width: 100%; height: auto;" %>
+                        <% end %>
+                      <%= link_to recipe_path(daily.recipe) do %>
+                        <div class="card-body">
+                          <div class="row align-items-center">
+                            <div class="text-center">
+                              <div class="card-body-dail">
+                                <h4 class="text-uppercase mb-0 py-1" style="font-weight: semi-bold; font-size: 1rem;">
+                                  <%= daily.date.strftime("%d/%m/%Y") %>
+                                </h4>
+                              </div>
+                            </div>
+                          </div>
+                      <div class="overlay-title">
+                        <%= daily.recipe.name %>
+                      </div>
+                      </div>
+                        <% end %>
+                  </div>
+                 </div>
+                </div>
+                <% end %>
+              </div>
+          </div>
+          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+              <div class="row row-cols-1 row-cols-sm-2 g-3 mb-4">
+                <% @favorites.each do |favorite| %>
+                  <div class="col-6">
+                    <div class="card veggie-ronded">
+                      <div class="position-relative">
+                        <% if favorite.recipe.photo.attached? %>
+                            <%= cl_image_tag favorite.recipe.photo.key, crop: :fill, class: "card-img-top veggie-ronded" %>
+                        <% else %>
+                            <%= image_tag "home_recipe_4.png", class: "card-img-top veggie-ronded", style: "width: 100%; height: auto;" %>
+                        <% end %>
+                      <%= link_to recipe_path(favorite.recipe) do %>
+                        <div class="card-body-fav">
+                          <div class="row align-items-center">
+                            <div class="text-center">
+                              <h4 class="text-uppercase" style="font-weight: semi-bold; font-size: 1rem;">
+                                <%= favorite.recipe.name %>
+                              </h4>
+                            </div>
+                          </div>
+                      </div>
+                        <% end %>
+                  </div>
+                 </div>
+                </div>
+              <% end %>
+              </div>
+          </div>
+      </div>
+      </div>
+  </div>
+</div>
