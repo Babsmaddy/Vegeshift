@@ -1,8 +1,9 @@
 <div id="recipe-<%= recipe.id %>">
+  <%= turbo_stream_from "recipe_#{recipe.id}_recipe" %>
   <div class="main-img">
-    <i class="<%= @favorite.nil? ? "fa-regular" : "fa-solid" %> fa-heart" data-controller="favorites" data-action="click->favorites#fire" data-favorites-post-value="<%= recipe_favorites_path(@recipe) %>"  data-favorites-delete-value="<%= recipe_favorite_path(@recipe) %>"id="heart"></i>
-  <% if @recipe&.photo.attached? %>
-    <%= cl_image_tag @recipe.photo.key, id:"img_main" %>
+    <i class="<%= favorite.nil? ? "fa-regular" : "fa-solid" %> fa-heart" data-controller="s" data-action="click->s#fire" data-favorites-post-value="<%= recipe_favorites_path(recipe) %>"  data-favorites-delete-value="<%= recipe_favorite_path(recipe) %>"id="heart"></i>
+  <% if recipe&.photo.attached? %>
+    <%= cl_image_tag recipe.photo.key, id:"img_main" %>
   <% else %>
     <%= image_tag("recette.jpg", id:"img_main") %>
   <% end %>
@@ -13,21 +14,21 @@
         <hr id="popup">
       </div>
     <div class="text-center">
-      <h2><%= @recipe.name %></h2>
+      <h2><%= recipe.name %></h2>
     </div>
     <div class="row">
       <div class="col-6">
           Temps :
           <i class="fa-regular fa-clock"></i>
-          <%= @recipe.time %> mn
+          <%= recipe.time %> mn
         </div>
       <div class="col-6">
           Difficulté :
-          <% if @recipe.difficulty == 1 %>
+          <% if recipe.difficulty == 1 %>
             <i class="fa-solid fa-star"></i>
             <i class="fa-regular fa-star"></i>
             <i class="fa-regular fa-star"></i>
-          <% elsif @recipe.difficulty == 3 %>
+          <% elsif recipe.difficulty == 3 %>
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
@@ -39,9 +40,9 @@
       </div>
       <div class="col-6 mt-2">
           Coût :
-          <% if @recipe.cost == 1 %>
+          <% if recipe.cost == 1 %>
             <i class="fa-solid fa-euro-sign"></i>
-          <% elsif @recipe.cost == 3 %>
+          <% elsif recipe.cost == 3 %>
             <i class="fa-solid fa-euro-sign"></i>
             <i class="fa-solid fa-euro-sign"></i>
             <i class="fa-solid fa-euro-sign"></i>
@@ -53,7 +54,7 @@
       <div class="col-6 mt-2">
           Coût en Co2 :
           <% co2_sum =[] %>
-          <% co2_sum = @recipe.ingredients.map do |ingredient| %>
+          <% co2_sum = recipe.ingredients.map do |ingredient| %>
             <% if ingredient.co2.nil? %>
               <% 100 %>
             <% else %>
@@ -79,7 +80,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <%= simple_form_for [@recipe, @daily] do |f| %>
+              <%= simple_form_for [recipe, daily] do |f| %>
                 <%= f.input :date,
                     as: :string,
                     input_html: { data: { controller: "datepicker" } } %>
@@ -99,7 +100,7 @@
     <div>
       <h3>Ingredients</h3>
       <div class="row mt-2">
-      <% @recipe.ingredients.each do |ingredient| %>
+      <% recipe.ingredients.each do |ingredient| %>
         <div class="col-6 gap-2"><i class="fa-regular fa-circle-check text-primary"></i> <%= ingredient.name %>
         </div>
 
@@ -110,7 +111,7 @@
     <div>
       <h3>Étapes :</h3>
       <div class="row mt-2" id="step">
-      <% @recipe.steps.each do |step| %>
+      <% recipe.steps.each do |step| %>
         <div class="col-12 mt-2">
           <%= step.number %> - <%= step.content %>
         </div>

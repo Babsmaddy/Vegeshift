@@ -1,4 +1,2 @@
-  <div id="recipes" class="recipes">
-    <%= render @recipe %>
-  </div>
-</div>
+
+<%= render "recipe", recipe: @recipe, favorite: @favorite, daily: @daily  %>

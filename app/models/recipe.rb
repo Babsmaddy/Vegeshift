@@ -119,6 +119,5 @@ class Recipe < ApplicationRecord
 
     total_co2 = ingredients.sum { |ingredient| ingredient.co2 || 100 }
     update(co2: total_co2)
-
   end
 end
