@@ -53,6 +53,7 @@ gem "sassc-rails"
 gem "cloudinary"
 gem "ruby-openai"
 gem "pg_search"
+gem "solid_queue"
 
 
 group :development, :test do
