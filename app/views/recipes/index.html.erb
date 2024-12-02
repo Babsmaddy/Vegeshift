@@ -37,19 +37,32 @@
               </div>
             </div>
 
-              <div class="d-flex gap-2">
+              <div class="d-flex align-items-center gap-2">
                 <div class="icon-container d-flex justify-content-between align-items-center">
-                    . > <%= recipe.time %> min
+                    <i class="fa-regular fa-clock"></i>
+                      <%= recipe.time %> min
                           <p class="card-text mt-3">
                         </p>
                 </div>
 
-                  <div class="icon-container d-flex justify-content-between align-items-center">
-                      <%= image_tag("difficulty.png", class: "img-fluid") %>
+                  <div class="icon-container align-items-center">
+                      <%#= image_tag("difficulty.png", class: "img-fluid") %>
                     <%#= recipe.difficulty %>
-                    <p class="card-text mt-3">
-                      <span style="font-weight: bold;"></span>
-                  </p>
+                   <% if recipe.difficulty.present? %>
+                    <span class="difficulty-star">
+                    <% case recipe.difficulty %>
+                    <% when "Facile" %>
+                      <i class="fa-solid fa-star"></i>
+                    <% when "Moyenne" %>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                    <% when "Difficile" %>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                    <% end %>
+                      </span>
+                    <% end %>
                 </div>
               </div>
         </div>

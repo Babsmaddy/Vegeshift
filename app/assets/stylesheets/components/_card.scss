@@ -47,13 +47,12 @@
   box-shadow: 10px 10px 15px rgb(233, 227, 227);
   border-radius: 0 0 1.5rem 1.5rem;
 
-
   h5{
     padding: 0.125rem;
     font-size: 1rem;
   }
 
-  img{
+  img {
     padding: 0.125rem;
     width: 40px;
     height: 40px;
@@ -74,23 +73,25 @@
   width: 100%;
   bottom: 10px;
   right: 10px;
-  background: #10ff3480;
   padding: 0.5rem;
+  background: #1FCC79;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-
-  img{
+  img {
     width: 30px;
     height: 30px;
     margin-right: 5px;
   }
 
-  .img-fluid{
+  .img-fluid {
     width: 25px;
     height: 25px;
   }
 
-  .co2-text{
+  .co2-text {
     font-size: 0.9rem;
     font-weight: bold;
     color: #333;
@@ -101,12 +102,19 @@
   gap: 1rem;
   display: flex;
 
-.icon-container{
+.icon-container {
   display: flex;
   align-items: center;
-  gap: 0,5rem;
+  gap: 10px;
   margin-left: 4px;
 }
+
+.icon-container .fa-star {
+  color: rgb(18, 16, 6);
+  font-size: 1.2rem;
+}
+
+
 
 img {
   width: 25px;
