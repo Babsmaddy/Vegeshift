@@ -11,6 +11,19 @@ class RecipesController < ApplicationController
     @daily = Daily.new
     # @daily = current_user.dailies.find_by(recipe: @recipe)
     @favorite = current_user.favorites.find_by(recipe: @recipe) || nil
+
+    @calcul = 0
+    @recipe.ingredients.map do |ingredient|
+      @recipe.recipe_ingredients.each do |recipeingredient|
+        if ingredient.co2.nil?
+          @calcul += 100*recipeingredient.quantity
+        else
+          @calcul += ingredient.co2*recipeingredient.quantity
+        end
+      end
+    end
+
+
   end
 
   def new

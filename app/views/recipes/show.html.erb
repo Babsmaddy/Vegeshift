@@ -51,15 +51,9 @@
     </div>
     <div class="col-6 mt-2">
         Coût en Co2 :
-        <% co2_sum =[] %>
-        <% co2_sum = @recipe.ingredients.map do |ingredient| %>
-          <% if ingredient.co2.nil? %>
-            <% 100 %>
-          <% else %>
-            <% ingredient.co2 %>
-          <% end %>
-        <% end %>
-        <%= co2_sum.sum %> g
+          <%= @calcul %> g
+
+
     </div>
   </div>
   <hr>
@@ -99,7 +93,7 @@
     <h3>Ingredients</h3>
     <div class="row mt-2">
     <% @recipe.ingredients.each do |ingredient| %>
-      <div class="col-6 gap-2"><i class="fa-regular fa-circle-check text-primary"></i> <%= ingredient.name %>
+      <div class="col-6 gap-2"><i class="fa-regular fa-circle-check text-primary"></i> <%= ingredient.recipe_ingredients[0].quantity %>g - <%= ingredient.name %>
       </div>
 
     <% end %>
