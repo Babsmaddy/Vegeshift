@@ -51,21 +51,9 @@
     </div>
     <div class="col-6 mt-2">
         Coût en Co2 :
-<<<<<<< HEAD
-          <%= @calcul %> g
+          <%= @calcul.round %> g
 
 
-=======
-        <% co2_sum =[] %>
-        <% co2_sum = @recipe.ingredients.map do |ingredient| %>
-          <% if ingredient.co2_gr.nil? %>
-            <% 100 %>
-          <% else %>
-            <% ingredient.co2_gr %>
-          <% end %>
-        <% end %>
-        <%= co2_sum.sum %> g
->>>>>>> master
     </div>
   </div>
   <hr>
