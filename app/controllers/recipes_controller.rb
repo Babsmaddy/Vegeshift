@@ -21,18 +21,26 @@ class RecipesController < ApplicationController
     # vérifier si c'est .present?
     # params[:temp_photo].attached?
     # raise
-    @gpt_response = Recipe.photo_gpt(encode_image) if params[:temp_photo].present?
-    @gpt_response = Recipe.call_gpt(params[:url]) if params[:url].present?
-    @gpt_response = Recipe.call_gpt(params[:title]) if params[:title].present?
+    # @gpt_response = Recipe.photo_gpt(encode_image) if params[:temp_photo].present?
+    # @gpt_response = Recipe.call_gpt(params[:url]) if params[:url].present?
+    # @gpt_response = Recipe.call_gpt(params[:title]) if params[:title].present?
 
-    @recipe = Recipe.set_recipe(@gpt_response)
+    @recipe = UploadJob.perform_later(photo: encode_image) if params[:temp_photo].present?
+    @recipe = UploadJob.perform_later(text: params[:url]) if params[:url].present?
+    @recipe = UploadJob.perform_later(text: params[:title]) if params[:title].present?
+
+    # @recipe = Recipe.set_recipe(@gpt_response)
     # @recipe = Recipe.photo_gpt
-    if @recipe.save
-      redirect_to recipe_path(@recipe)
+    # if @recipe.save
+    #   redirect_to recipe_path(@recipe)
 
-    else
-      render :new, status: :unprocessable_entity
-    end
+    # else
+    #   render :new, status: :unprocessable_entity
+    # end
+  end
+
+  def loader
+
   end
 
 

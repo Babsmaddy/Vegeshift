@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount MissionControl::Jobs::Engine, at: "/jobs"
   devise_for :users
   root to: "pages#home"
   get "/components", to: "pages#components"
@@ -9,6 +10,8 @@ Rails.application.routes.draw do
     resources :favorites, only: [:create, :destroy]
   end
   resources :dashboards, only: [:index, :my_recipies]
+
+  get "/loader" => "recipes#loader"
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
