@@ -11,9 +11,13 @@
         <div class="card rounded m-3">
           <div class="position-relative">
             <% if recipe.photo.attached? %>
-                <%= cl_image_tag recipe.photo.key, class: "card-img-top", style: "width: 100%; height: auto;" %>
+                <%= link_to recipe_path(recipe) do %>
+                  <%= cl_image_tag recipe.photo.key, class: "card-img-top", style: "width: 100%; height: auto;" %>
+                <% end %>
             <% else %>
-                <%= image_tag "home_recipe_4.png", class: "card-img-top", style: "width: 100%; height: auto;" %>
+                <%= link_to recipe_path(recipe) do %>
+                  <%= image_tag "home_recipe_4.png", class: "card-img-top", style: "width: 100%; height: auto;" %>
+                <% end %>
             <% end  %>
               <div class="card-recipe-co2 d-flex align-items-center">
                 <%= image_tag("co2-cloud.png", class: "img-fluid") %>
@@ -25,8 +29,8 @@
             <div class="row align-items-center">
               <div class="text-center mb-3">
                 <h2
-                 class="text-uppercase"
-                  style="font-weight: semi-bold; font-size: 1rem;">
+                 class="text-capitalize"
+                  style="font-weight: bold; font-size: 1rem;">
                   <%= recipe.name %>
                </h2>
               </div>
@@ -34,24 +38,20 @@
 
               <div class="d-flex gap-2">
                 <div class="icon-container d-flex justify-content-between align-items-center">
-                  <%= image_tag("timer.png", class: "img-fluid") %>
-                  <%= recipe.time %>
+                    . > <%= recipe.time %> min
                   <p class="card-text mt-3">
                     <span style="font-weight: bold; font-size: 0.9rem;"></span>
                   </p>
                 </div>
+
                   <div class="icon-container d-flex justify-content-between align-items-center">
                     <%= image_tag("difficulty.png", class: "img-fluid") %>
-                    <%= recipe.difficulty %>
+                    <%#= recipe.difficulty %>
                     <p class="card-text mt-3">
                       <span style="font-weight: bold;"></span>
                   </p>
                 </div>
               </div>
-
-          <div class="text-center mt-3">
-            <%= link_to "Go", recipe_path(recipe), class: "button-veggie px-4 py_2 mb-3" %>
-          </div>
         </div>
       </div>
     </div>
