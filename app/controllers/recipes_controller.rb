@@ -15,10 +15,10 @@ class RecipesController < ApplicationController
     @calcul = 0
     @recipe.ingredients.map do |ingredient|
       @recipe.recipe_ingredients.each do |recipeingredient|
-        if ingredient.co2.nil?
-          @calcul += 100*recipeingredient.quantity
+        if ingredient.co2_gr.nil?
+          @calcul += 0.04*recipeingredient.quantity
         else
-          @calcul += ingredient.co2*recipeingredient.quantity
+          @calcul += ingredient.co2_gr*recipeingredient.quantity
         end
       end
     end
