@@ -9,7 +9,7 @@ class Recipe < ApplicationRecord
   has_many :ingredients, through: :recipe_ingredients
   # Les deux ligne ci-dessous permettent de lier la recette traditionnelle avec la recette végétale
   has_one :vegatal_recipe, class_name: "Recipe", foreign_key: "traditionnal_id"
-  belongs_to :tradionnal_recipe, class_name: "Recipe", optional: true
+  belongs_to :traditionnal_recipe, class_name: "Recipe", optional: true
   has_one_attached :photo
 
   # Recherche ingréditens et/ou recette
