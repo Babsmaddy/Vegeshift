@@ -24,15 +24,17 @@ class RecipesController < ApplicationController
     # @gpt_response = Recipe.photo_gpt(encode_image) if params[:temp_photo].present?
     # @gpt_response = Recipe.call_gpt(params[:url]) if params[:url].present?
     # @gpt_response = Recipe.call_gpt(params[:title]) if params[:title].present?
+    @recipe = Recipe.create
 
-    @recipe = UploadJob.perform_later(photo: encode_image) if params[:temp_photo].present?
-    @recipe = UploadJob.perform_later(text: params[:url]) if params[:url].present?
-    @recipe = UploadJob.perform_later(text: params[:title]) if params[:title].present?
+    UploadJob.perform_later(photo: encode_image, recipe: @recipe, current_user: current_user) if params[:temp_photo].present?
+    UploadJob.perform_later(text: params[:url], recipe: @recipe, current_user: current_user) if params[:url].present?
+    UploadJob.perform_later(text: params[:title], recipe: @recipe, current_user: current_user) if params[:title].present?
+
+    redirect_to recipe_path(@recipe)
 
     # @recipe = Recipe.set_recipe(@gpt_response)
     # @recipe = Recipe.photo_gpt
     # if @recipe.save
-    #   redirect_to recipe_path(@recipe)
 
     # else
     #   render :new, status: :unprocessable_entity

@@ -1,7 +1,9 @@
+<%= turbo_stream_from "recipe_#{recipe.id}_recipe" %>
 <div id="recipe-<%= recipe.id %>">
-  <%= turbo_stream_from "recipe_#{recipe.id}_recipe" %>
+  <%= render "recipes/loader" unless recipe.name %>
+  <% if recipe.name %>
   <div class="main-img">
-    <i class="<%= favorite.nil? ? "fa-regular" : "fa-solid" %> fa-heart" data-controller="s" data-action="click->s#fire" data-favorites-post-value="<%= recipe_favorites_path(recipe) %>"  data-favorites-delete-value="<%= recipe_favorite_path(recipe) %>"id="heart"></i>
+    <i class="<%= favorite.nil? ? "fa-regular" : "fa-solid" %> fa-heart" data-controller="favorites" data-action="click->favorites#fire" data-favorites-url-value="<%= recipe_favorites_path(recipe) %>"id="heart"></i>
   <% if recipe&.photo.attached? %>
     <%= cl_image_tag recipe.photo.key, id:"img_main" %>
   <% else %>
@@ -119,5 +121,5 @@
       </div>
     </div>
   </div>
+  <% end %>
   </div>
-</div>

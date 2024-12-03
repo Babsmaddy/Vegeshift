@@ -1,14 +1,20 @@
 class GenerateRecipeGpt
+  include Rails.application.routes.url_helpers
+
   def initialize(params = {})
     @photo = params[:photo] || nil
     @text = params[:text] || nil
     @client = OpenAI::Client.new
+    @recipe = params[:recipe]
+    @current_user = params[:current_user]
+    @favorite = @current_user.favorites.find_by(recipe: @recipe)
+    @daily = Daily.new
+
   end
 
   def call
     photo_gpt(@photo) unless @photo.nil?
     call_gpt(@text) unless @text.nil?
-    @recipe
   end
 
   private
@@ -59,7 +65,7 @@ class GenerateRecipeGpt
   end
 
   def set_recipe(gpt)
-    @recipe = Recipe.new(
+    @recipe.update(
       name: gpt["name"],
       time: gpt["time"],
       difficulty: gpt["difficulty"],
@@ -84,6 +90,9 @@ class GenerateRecipeGpt
         recipe: @recipe
       )
     end
-    @recipe
+    Turbo::StreamsChannel.broadcast_replace_to "recipe_#{@recipe.id}_recipe",
+    target: "recipe-#{@recipe.id}",
+    partial: "recipes/recipe",
+    locals: { path: recipe_path(@recipe), recipe: @recipe, favorite: @favorite, daily: @daily }
   end
 end
