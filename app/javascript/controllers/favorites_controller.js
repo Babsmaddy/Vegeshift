@@ -2,11 +2,8 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="favorites"
 export default class extends Controller {
-  static values = { post: String, delete: String}
+  static values = { url: String}
   connect() {
-    console.log(this.postValue);
-    console.log(this.deleteValue);
-
 
   }
 
@@ -15,18 +12,16 @@ export default class extends Controller {
 
       event.target.classList.remove("fa-regular")
       event.target.classList.add("fa-solid")
-      fetch(this.postValue,
+      fetch(this.urlValue,
         {
           method: "POST",
         }
       );
     } else if(event.target.classList.contains("fa-solid")){
-      console.log("yo");
-      console.log(this.deleteValue);
-
+   
       event.target.classList.remove("fa-solid")
       event.target.classList.add("fa-regular")
-      fetch(this.deleteValue,
+      fetch(this.urlValue,
         {
           method: "DELETE",
         }

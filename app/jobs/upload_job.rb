@@ -1,7 +1,7 @@
 class UploadJob < ApplicationJob
   queue_as :default
 
-  def perform(*args)
-    # Do something later
+  def perform(params = {})
+    @recipe = GenerateRecipeGpt.new(params).call
   end
 end
