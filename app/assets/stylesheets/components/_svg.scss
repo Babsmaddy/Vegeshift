@@ -5,7 +5,7 @@
 // $flatten_deg: 85; // how round will the pancake be at the top/peak (in deg), affecting general animation though so not really adjustable
 // $angle: 27; // max pan's angle while flipping (in deg)
 // $peak: 40%; // pancake's highest level, obviously ;)
-// #333_back: #ffde6b; // background
+// $color_back: #ffde6b; // background
 // #333: #333; // the rest
 
 .background{
@@ -101,13 +101,13 @@ h1 {
     height: 50%;
     background-color: transparent;
     transform-origin: 15% 60%;
-    animation: flip #{$anim_time}s ease-in-out infinite;
+    animation: flip 2.1s ease-in-out infinite;
     #sides {
       position: absolute;
       width: 100%;
       height: 100%;
       transform-origin: 15% 60%;
-      animation: switchSide #{$anim_time}s ease-in-out infinite;
+      animation: switchSide 2.1s ease-in-out infinite;
       #handle {
         position: absolute;
         bottom: 18%;
@@ -115,7 +115,7 @@ h1 {
         width: 35%;
         height: 20%;
         background-color: transparent;
-        border-top: 1vh solid $secondary;
+        border-top: 1vh solid $green;
         border-left: 1vh solid transparent;
         border-radius: 100%;
         transform: rotate(20deg) rotateX(0deg) scale(1.3, .9);
@@ -126,7 +126,7 @@ h1 {
         right: 30%;
         width: 50%;
         height: 8%;
-        background-color: $secondary;
+        background-color: $green;
         border-radius: 0 0 1.4em 1.4em;
         transform-origin: -15% 0;
       }
@@ -137,7 +137,7 @@ h1 {
       width: 100%;
       height: 100%;
       transform: rotateX(85deg);
-      animation: jump #{$anim_time}s ease-in-out infinite;
+      animation: jump 2.1s ease-in-out infinite;
       #pastry {
         position: absolute;
         bottom: 26%;
@@ -145,10 +145,10 @@ h1 {
         width: 40%;
         height: 45%;
         background-color: $info;
-        box-shadow: 0 0 3px 0 $secondary;
+        box-shadow: 0 0 3px 0 $green;
         border-radius: 100%;
         transform-origin: -20% 0;
-        animation: fly #{$anim_time}s ease-in-out infinite;
+        animation: fly 2.1s ease-in-out infinite;
       }
     }
   }
@@ -157,7 +157,7 @@ h1 {
 @keyframes jump {
   0% {
     top: 24%;
-    transform: rotateX(#{$flatten_deg}deg);
+    transform: rotateX(85deg);
   }
   25% {
     top: 10%;
@@ -165,13 +165,13 @@ h1 {
   }
   50% {
     top: 30%;
-    transform: rotateX(#{$flatten_deg}deg);
+    transform: rotateX(85deg);
   }
   75% {
     transform: rotateX(0deg);
   }
   100% {
-    transform: rotateX(#{$flatten_deg}deg);
+    transform: rotateX(85deg);
   }
 }
 
@@ -180,14 +180,14 @@ h1 {
     transform: rotate(0deg);
   }
   5% {
-    transform: rotate(-#{$angle}deg);
+    transform: rotate(-27deg);
   }
   30%,
   50% {
     transform: rotate(0deg);
   }
   55% {
-    transform: rotate(#{$angle}deg);
+    transform: rotate(27deg);
   }
   83.3% {
     transform: rotate(0deg);
