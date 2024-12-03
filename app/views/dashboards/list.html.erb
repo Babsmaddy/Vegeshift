@@ -1,0 +1,39 @@
+<div class="mt-2 text-center">
+  <%= image_tag("recette.jpg", id:"img_main-fav") %>
+</div>
+<div class="text-center">
+  <h2>
+    <%= current_user.email %>
+  </h2>
+</div>
+<div class="content-fav mt-4">
+  <div class="pt-3 mb-2">
+    <hr id="popup-fav">
+  </div>
+  <div class="container-fav px-4">
+   <hr>
+    <div class="row">
+        <ul class="nav nav-pills justify-content-around p-0" id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="a" role="tab" aria-controls="pills-home" aria-selected="true">Ma liste de courses</a>
+          </li>
+        </ul>
+      </div>
+        <hr>
+      <div>
+        <div class="row">
+         <% @dailies.each do |daily| %>
+              <div class="col-12">
+                 <% daily.recipe.ingredients.each do |ingredient| %>
+                 <%# <li> <%= ingredient.name %>
+                 <%# <li><%= daily.recipe.recipe_ingredients.find_by(ingredient:ingredient).quantity.to_i%>
+                 <div class="col-12 gap-2">
+                  <i class="fa-solid fa-toggle-off"></i>
+                  <%= ingredient.name %> - <%=  daily.recipe.recipe_ingredients.find_by(ingredient:ingredient).quantity.to_i %>g
+                 <% end %>
+                <% end %>
+              </div>
+      </div>
+      </div>
+  </div>
+</div>
