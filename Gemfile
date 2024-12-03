@@ -54,6 +54,8 @@ gem "cloudinary"
 gem "ruby-openai"
 gem "pg_search"
 gem "solid_queue"
+gem "solid_cable"
+gem "mission_control-jobs"
 
 
 group :development, :test do

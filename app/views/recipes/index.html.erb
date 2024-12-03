@@ -12,15 +12,15 @@
           <div class="position-relative">
             <% if recipe.photo.attached? %>
                 <%= link_to recipe_path(recipe) do %>
-                  <%= cl_image_tag recipe.photo.key, class: "card-img-top", style: "width: 100%; height: auto;" %>
+                  <%= cl_image_tag recipe.photo.key, class: "card-img-top"%>
                   <div class="card-recipe-co2 justify-content-center align-items-center">
                 <%#= image_tag("co2-cloud.png", class: "img-fluid me-2") %>
-                  <span class="co2-text"><%= recipe.co2 %>g Co2</span>
+                  <span class="co2-text"><%= recipe.co2.round %>g Co2</span>
              </div>
                 <% end %>
             <% else %>
                 <%= link_to recipe_path(recipe) do %>
-                  <%= image_tag "home_recipe_4.png", class: "card-img-top", style: "width: 100%; height: auto;" %>
+                  <%= image_tag "home_recipe_4.png", class: "card-img-top"%>
                   <div class="card-recipe-co2 justify-content-center align-items-center">
                 <%#= image_tag("co2-cloud.png", class: "img-fluid me-2") %>
                   <span class="co2-text"><%= recipe.co2 %>g Co2</span>

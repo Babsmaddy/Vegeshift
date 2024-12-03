@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_02_141417) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_03_115512) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -84,19 +85,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_02_141417) do
     t.integer "time"
     t.integer "difficulty"
     t.integer "cost"
-    t.integer "co2"
+    t.integer "co2", default: 0
     t.boolean "vegetal", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "solid_cable_messages", force: :cascade do |t|
-    t.text "channel"
-    t.text "payload"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["channel"], name: "index_solid_cable_messages_on_channel"
-    t.index ["created_at"], name: "index_solid_cable_messages_on_created_at"
+    t.bigint "traditionnal_recipe_id"
+    t.index ["traditionnal_recipe_id"], name: "index_recipes_on_traditionnal_recipe_id"
   end
 
   create_table "solid_queue_blocked_executions", force: :cascade do |t|
@@ -249,6 +243,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_02_141417) do
   add_foreign_key "favorites", "users"
   add_foreign_key "recipe_ingredients", "ingredients"
   add_foreign_key "recipe_ingredients", "recipes"
+  add_foreign_key "recipes", "recipes", column: "traditionnal_recipe_id"
   add_foreign_key "solid_queue_blocked_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_claimed_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_failed_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
