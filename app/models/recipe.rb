@@ -45,7 +45,6 @@ class Recipe < ApplicationRecord
 
   def sum_total_co2
     return if ingredients.blank?
-
     @calcul = 0
     ingredients.map do |ingredient|
       ingredient.co2_gr = 0.04 if ingredient.co2_gr.nil?

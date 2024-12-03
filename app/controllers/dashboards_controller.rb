@@ -7,4 +7,10 @@ class DashboardsController < ApplicationController
   def create
     @daily = Daily.new
   end
+
+  def list
+    @dailies = current_user.dailies
+   
+  end
+
 end

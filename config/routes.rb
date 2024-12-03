@@ -9,7 +9,10 @@ Rails.application.routes.draw do
     resources :dailies, only: [:create, :destroy]
     resources :favorites, only: [:create, :destroy]
   end
-  resources :dashboards, only: [:index, :my_recipies]
+  resources :dashboards, only: [:index]
+  get "/dashboards/list", to: "dashboards#list", as: :list
+  get "/dashboards/charts", to: "dashboards#charts", as: :charts
+
 
   get "/loader" => "recipes#loader"
 
