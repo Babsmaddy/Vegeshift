@@ -93,11 +93,7 @@
     <h3>Ingredients</h3>
     <div class="row mt-2">
     <% @recipe.ingredients.each do |ingredient| %>
-<<<<<<< HEAD
-      <div class="col-6 gap-2"><i class="fa-regular fa-circle-check text-primary"></i> <%= ingredient.recipe_ingredients[0].quantity %>g - <%= ingredient.name %>
-=======
       <div class="col-6 gap-2"><i class="fa-regular fa-circle-check text-primary"></i> <%= ingredient.recipe_ingredients[0].quantity.to_i %>g - <%= ingredient.name %>
->>>>>>> master
       </div>
 
     <% end %>
