@@ -5,8 +5,8 @@
 // $flatten_deg: 85; // how round will the pancake be at the top/peak (in deg), affecting general animation though so not really adjustable
 // $angle: 27; // max pan's angle while flipping (in deg)
 // $peak: 40%; // pancake's highest level, obviously ;)
-// $color_back: #ffde6b; // background
-// $color: #333; // the rest
+// #333_back: #ffde6b; // background
+// #333: #333; // the rest
 
 .background{
   height: 100vh;
@@ -24,7 +24,7 @@ h1 {
   text-align: center;
   font-family: 'Amatic SC';
   font-size: 6vh;
-  color: $color;
+  color: #333;
   opacity: .75;
   animation: pulse 2.5s linear infinite;
 }
@@ -44,13 +44,13 @@ h1 {
     text-align: center;
     font-family: 'Amatic SC';
     font-size: 4vh;
-    color: $color;
+    color: #333;
     opacity: .75;
   }
   .bubble {
     position: absolute;
     border-radius: 100%;
-    box-shadow: 0 0 .25vh lighten($color, 10%);
+    box-shadow: 0 0 .25vh lighten(#333, 10%);
     opacity: 0;
   }
   .bubble:nth-child(1) {
@@ -58,7 +58,7 @@ h1 {
     left: 58%;
     width: 2.5vh;
     height: 2.5vh;
-    background-color: lighten($color, 7%);
+    background-color: lighten(#333, 7%);
     animation: bubble 2s cubic-bezier(.53, .16, .39, .96) infinite;
   }
   .bubble:nth-child(2) {
@@ -66,7 +66,7 @@ h1 {
     left: 52%;
     width: 2vh;
     height: 2vh;
-    background-color: lighten($color, 4%);
+    background-color: lighten(#333, 4%);
     animation: bubble 2s ease-in-out .35s infinite;
   }
   .bubble:nth-child(3) {
@@ -74,7 +74,7 @@ h1 {
     left: 50%;
     width: 1.5vh;
     height: 1.5vh;
-    background-color: $color;
+    background-color: #333;
     animation: bubble 1.5s cubic-bezier(.53, .16, .39, .96) .55s infinite;
   }
   .bubble:nth-child(4) {
@@ -82,7 +82,7 @@ h1 {
     left: 56%;
     width: 1.2vh;
     height: 1.2vh;
-    background-color: darken($color, 3%);
+    background-color: darken(#333, 3%);
     animation: bubble 1.8s cubic-bezier(.53, .16, .39, .96) .9s infinite;
   }
   .bubble:nth-child(5) {
@@ -90,7 +90,7 @@ h1 {
     left: 63%;
     width: 1.1vh;
     height: 1.1vh;
-    background-color: darken($color, 6%);
+    background-color: darken(#333, 6%);
     animation: bubble 1.6s ease-in-out 1s infinite;
   }
   #area {
