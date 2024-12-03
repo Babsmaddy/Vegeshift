@@ -28,11 +28,10 @@
 .navbar-vegeshift .navbar-icon {
   font-size: 1.2rem;
   color: $grey-vege;
-
-
 }
 
-#index{
+#index {background-image: linear-gradient(to right, $primary 0%, $green 100%)}
+#index {
   font-size: 2rem;
   color: white;
   border-radius: 50%;
