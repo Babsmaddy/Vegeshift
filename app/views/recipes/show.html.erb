@@ -16,12 +16,11 @@
   </div>
   <div class="row">
     <div class="col-6">
-        Temps :
-        <i class="fa-regular fa-clock"></i>
+       <i class="img_show fa-regular fa-clock"></i>
         <%= @recipe.time %> mn
       </div>
     <div class="col-6">
-        Difficulté :
+      <i class="img_show fa-solid fa-utensils"></i>
         <% if @recipe.difficulty == 1 %>
           <i class="fa-solid fa-star"></i>
           <i class="fa-regular fa-star"></i>
@@ -37,7 +36,7 @@
         <% end %>
     </div>
     <div class="col-6 mt-2">
-        Coût :
+       <i class="img_show fa-solid fa-coins"></i>
         <% if @recipe.cost == 1 %>
           <i class="fa-solid fa-euro-sign"></i>
         <% elsif @recipe.cost == 3 %>
@@ -50,7 +49,7 @@
         <% end %>
     </div>
     <div class="col-6 mt-2">
-        Coût en Co2 :
+      <%= image_tag("nuage-de-co2-green.png", id:"img_co2") %>
           <%= @calcul.round %> g
 
 
@@ -93,13 +92,8 @@
     <h3>Ingredients</h3>
     <div class="row mt-2">
     <% @recipe.ingredients.each do |ingredient| %>
-<<<<<<< HEAD
-      <div class="col-6 gap-2"><i class="fa-regular fa-circle-check text-primary"></i> <%= ingredient.recipe_ingredients[0].quantity %>g - <%= ingredient.name %>
-=======
       <div class="col-6 gap-2"><i class="fa-regular fa-circle-check text-primary"></i> <%= ingredient.recipe_ingredients[0].quantity.to_i %>g - <%= ingredient.name %>
->>>>>>> master
       </div>
-
     <% end %>
     </div>
   </div>

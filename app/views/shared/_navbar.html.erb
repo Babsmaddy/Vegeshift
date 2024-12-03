@@ -10,8 +10,8 @@
       <i class="fa-solid fa-leaf" id="index"></i>
       <%# <i class="fa-solid fa-expand" id="scan"></i> %>
     <% end %>
-    <%= link_to "/dashboards", class: "nav-link" do %>
-      <i class="navbar-icon fa-solid fa-utensils"></i>
+    <%= link_to "/dashboards/list", class: "nav-link" do %>
+      <i class="navbar-icon fa-solid fa-cart-shopping"></i>
     <% end %>
     <i class="navbar-icon fa-solid fa-user" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></i>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -23,14 +23,16 @@
           <li class="nav-item">
             <%= link_to "Mes favoris", "/dashboards", class: "nav-link" %>
           </li>
-          <li class="nav-item">
+          <%# <li>
+            <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+          <%# </li> %>
+          <%# <li class="nav-item">
             <%= link_to "Ma liste de courses", "#", class: "nav-link" %>
-          </li>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+          <%# </li> %>
+            <%# <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
+              <%# <%= link_to "Another action", "#", class: "dropdown-item" %>
+              <%# <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>             </div>
           </li>
         <% else %>
           <li class="nav-item">
