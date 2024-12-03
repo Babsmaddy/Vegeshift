@@ -44,11 +44,12 @@ class Recipe < ApplicationRecord
     client = OpenAI::Client.new
     response = client.images.generate(
       parameters: {
-        prompt: "A recipe image of #{name} with this ingredients #{self.ingredients.pluck(:name).join(',')}",
+        prompt: "Can you find a beautiful popular instagram or pinterest image of the vegetarian recipe of #{name} with the ingredients mentionned in #{self.ingredients.pluck(:name).join(',')}",
         size: "256x256",
       }
     )
 
+    # "Can you find or produce a realistic and colored image of the vegetarian recipe of #{name} beautiful enough for instagram with the ingredients mentionned in #{self.ingredients.pluck(:name).join(',')}"
     url = response["data"][0]["url"]
     file = URI.parse(url).open
 
@@ -115,7 +116,7 @@ class Recipe < ApplicationRecord
 
   def sum_total_co2
     # self.ingredients.sum {|ingredient| ingredient.co2 || 100}
-    
+
     return if ingredients.blank?
 
     total_co2 = ingredients.sum { |ingredient| ingredient.co2_gr || 100 }
