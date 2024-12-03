@@ -15,23 +15,24 @@
         <%= form.text_field :title, class: "name-input-text form-control border rounded-pill border-0 bg-white", placeholder: "Nom ou lien de la recette", pattern: "[a-zA-Z0-9]+/^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/" %>
       </div>
   </div>
-
-  <div class="row text-center text-danger mt-1">
-    <p>ou </p>
-  </div>
-
-  <div class="row text-left">
-    <h4 class="title-2">Photo de la recette </h4>
-  </div>
-
-  <div class="row m-1">
-    <div class="upload-card p-4 text-center">
-        <div class="icon-new text-center bg-white">
-          <i class="icon-new fa-solid fa-image"></i>
-        </div>
-        <%= form.file_field :temp_photo, class: "form-control border rounded-pill border-2 bg-white" %>
+    <div class="row text-center text-danger mt-1">
+      <p>ou </p>
     </div>
-  </div>
+
+    <div class="title-2 row text-left">
+      <h4>Photo de la recette </h4>
+    </div>
+
+    <div class="row m-1">
+      <div class="upload-card p-3 text-center">
+          <div class="icon-new text-center bg-white">
+            <i class="icon-new fa-solid fa-image"></i>
+          </div>
+          <%= form.file_field :temp_photo, class: "form-control border rounded-pill border-2 bg-white" %>
+      </div>
+    </div>
+
+
 
     <%# <%= form.url_field :url, class: "form-control border rounded-pill border-0 bg-white", placeholder: "Entre le lien d'une recette" %>
 
