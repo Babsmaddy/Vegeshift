@@ -13,9 +13,7 @@ threads min_threads_count, max_threads_count
 
 rails_env = ENV.fetch("RAILS_ENV") { "development" }
 
-if Rails.env.development?
-  plugin :solid_queue
-end
+
 
 if rails_env == "production"
   # If you are running more than 1 thread per process, the workers count
@@ -34,6 +32,10 @@ end
 # Specifies the `worker_timeout` threshold that Puma will use to wait before
 # terminating a worker in development environments.
 worker_timeout 3600 if ENV.fetch("RAILS_ENV", "development") == "development"
+
+# if Rails.env.development?
+#   plugin :solid_queue
+# end
 
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
 port ENV.fetch("PORT") { 3000 }

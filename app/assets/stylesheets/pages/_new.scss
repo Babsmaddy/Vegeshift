@@ -8,6 +8,7 @@
 
 .name-input {
   box-shadow: 0 0 0 0.1rem $grey-vege;
+  display: inline-block !important;
 }
 
 .url-input {
@@ -29,10 +30,4 @@
   font-size: 2rem;
   color: $grey-vege;
   background-color: white;
-}
-
-h4{
-  color: $dark-blue-vege;
-  font-size: 17px;
-  font-weight: 600;
 }

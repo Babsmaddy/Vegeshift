@@ -1,17 +1,20 @@
 
-  <div class="container justify-content-center bg-white mt-2">
-    <div class="cancel row">
-      <%= link_to "Retour", root_path, class: "text-decoration-none text-danger" %>
-    </div>
+  <div class="cancel row p-2">
+    <%= link_to "Retour", root_path, class: "text-decoration-none text-danger" %>
+  </div>
 
-    <div class="row justify-content-center m-3">
-      <h3 class="title row text-center">Trouver une alternative végétale à une recette </h3>
-        <div class="name-input input-group mb-1 border rounded-pill border-1 bg-white">
-          <%= form_with url: recipes_path, method: :post, data: {turbo: false, action: 'submit->loader#toggleDnone'} do |form|%>
-          <%= form.text_field :title, class: "form-control border rounded-pill border-0 bg-white", placeholder: "Entre le nom d'une recette" %>
-        </div>
-    </div>
+<div class="image-home row justify-content-center">
+      <%= image_tag "Fond_légumes.png" %>
+  </div>
+<div class="container justify-content-center bg-white mt-2">
 
+  <div class="row justify-content-center m-3">
+    <h3 class="title row text-center">Trouver une alternative végétale à une recette </h3>
+      <div class="name-input input-group mb-1 border rounded-pill border-1 bg-white">
+         <%= form_with url: recipes_path, method: :post, data: {turbo: false} do |form|%>
+        <%= form.text_field :title, class: "name-input-text form-control border rounded-pill border-0 bg-white", placeholder: "Nom ou lien de la recette", pattern: "[a-zA-Z0-9]+/^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/" %>
+      </div>
+  </div>
     <div class="row text-center text-danger mt-1">
       <p>ou </p>
     </div>
@@ -30,25 +33,14 @@
     </div>
 
 
-    <div class="row text-center text-danger my-2">
-      <p>ou </p>
-    </div>
 
-    <div class="title-2 row text-left">
-      <h4>Lien de la recette </h4>
-    </div>
+    <%# <%= form.url_field :url, class: "form-control border rounded-pill border-0 bg-white", placeholder: "Entre le lien d'une recette" %>
 
-    <div class="row justify-content-center m-3">
-      <div class="url-input input-group mb-1 border rounded-pill border-1 bg-white">
-      <%= form.url_field :url, class: "form-control border rounded-pill border-0 bg-white", placeholder: "Entre le lien d'une recette" %>
 
-      </div>
-    </div>
-    <div class="row justify-content-center mt-3">
-      <div class="text-center mt-1 p-0">
-        <%= form.submit "Je végétalise !", class: "button-veggie-100" %>
-        <% end %>
-      </div>
+  <div class="row justify-content-center mt-3">
+    <div class="text-center mt-1 p-0">
+      <%= form.submit "Je végétalise !", class: "btn-grad" %>
+      <% end %>
     </div>
   </div>
-
+</div>

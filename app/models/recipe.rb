@@ -117,7 +117,19 @@ class Recipe < ApplicationRecord
     # self.ingredients.sum {|ingredient| ingredient.co2 || 100}
     return if ingredients.blank?
 
-    total_co2 = ingredients.sum { |ingredient| ingredient.co2 || 100 }
+    total_co2 = ingredients.sum { |ingredient| ingredient.co2_gr || 100 }
     update(co2: total_co2)
+  end
+
+  def co2
+    @calcul = 0
+    ingredients.map do |ingredient|
+      ingredient.co2_gr = 0.04 if ingredient.co2_gr.nil?
+      co2 = ingredient.co2_gr
+      recipe_ingredients.each do |recipeingredient|
+        @calcul += co2*recipeingredient.quantity
+      end
+    end
+    @calcul
   end
 end

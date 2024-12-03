@@ -11,6 +11,17 @@ class RecipesController < ApplicationController
     @daily = Daily.new
     # @daily = current_user.dailies.find_by(recipe: @recipe)
     @favorite = current_user.favorites.find_by(recipe: @recipe) || nil
+
+    @calcul = 0
+    @recipe.ingredients.map do |ingredient|
+      @recipe.recipe_ingredients.each do |recipeingredient|
+        if ingredient.co2_gr.nil?
+          @calcul += 0.04*recipeingredient.quantity
+        else
+          @calcul += ingredient.co2_gr*recipeingredient.quantity
+        end
+      end
+    end
   end
 
   def new
@@ -66,6 +77,6 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:name, :difficulty, :ingredients, :time, :co2)
+    params.require(:recipe).permit(:name, :difficulty, :ingredients, :time, :co2_kg, :co2_gr)
   end
 end
