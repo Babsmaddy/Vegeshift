@@ -89,6 +89,7 @@ class GenerateRecipeGpt
         quantity: ingredient["quantity"],
         recipe: @recipe
       )
+      @recipe.sum_total_co2
     end
     Turbo::StreamsChannel.broadcast_replace_to "recipe_#{@recipe.id}_recipe",
     target: "recipe-#{@recipe.id}",
