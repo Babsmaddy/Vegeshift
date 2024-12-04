@@ -54,8 +54,14 @@
                       </div>
                         <% end %>
                   </div>
+                   <div class="trash">
+                        <%= link_to recipe_daily_path(daily.recipe, daily), data: {turbo_method: :delete, turbo_confirm: "Supprimer #{daily.recipe.name}?"} do %>
+                          <i class="img-delete fa-regular fa-trash-can"></i>
+                        <% end %>
+                    </div>
                  </div>
                 </div>
+
                 <% end %>
               </div>
           </div>
