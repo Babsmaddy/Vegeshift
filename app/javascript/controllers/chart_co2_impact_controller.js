@@ -1,8 +1,11 @@
 import { Controller } from "@hotwired/stimulus"
+import { Chart } from "chart.js";
 
 // Connects to data-controller="chart-co2-impact"
 export default class extends Controller {
   connect() {
+    console.log("hello");
+
     const worldPopulation = {
       men: 504,
       women: 496
