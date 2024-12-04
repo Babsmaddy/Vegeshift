@@ -40,12 +40,11 @@
 }
 }
 
-
-
-.btn-grad {background-image: linear-gradient(to right, $primary 0%, $green  51%, #1D976C  100%)}
 .btn-grad {
-  border: none;
-   margin: 10px;
+   background-image: linear-gradient(to right, $green-vege 0%, #1EDD88 51%, #1D976C 100%);
+   background-color: green;
+   border: none;
+   margin: 12px;
    width: 85%;
    border-radius: 10rem;
    padding: .75rem 1.75rem;

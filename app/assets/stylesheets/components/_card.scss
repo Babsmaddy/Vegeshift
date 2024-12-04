@@ -58,9 +58,9 @@
     object-fit: cover;
     padding: 0;
 
-  a {
-    margin: 0.125rem;
-  }
+    a {
+      margin: 0.125rem;
+    }
   }
 }
 
@@ -98,8 +98,6 @@
   }
 }
 
-.d-flex{
-  display: flex;
 
 .icon-container {
   display: flex;
@@ -111,13 +109,6 @@
 .icon-container .fa-star {
   color: rgb(18, 16, 6);
   font-size: 0.7rem;
-}
-
-img {
-  width: 25px;
-  height: 25px;
-  object-fit: contain;
-}
 }
 
 .upload-card{
