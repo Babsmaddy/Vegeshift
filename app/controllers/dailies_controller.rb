@@ -20,7 +20,6 @@ class DailiesController < ApplicationController
     end
   end
 
-
   private
 
     def daily_params
