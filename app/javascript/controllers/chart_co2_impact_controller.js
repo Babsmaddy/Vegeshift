@@ -4,12 +4,14 @@ import { Chart } from "chart.js";
 
 // Connects to data-controller="chart-co2-impact"
 export default class extends Controller {
+  static targets = ["trad", "vege"];
   connect() {
-    console.log("hello");
+    console.log(this.tradTarget.innerText);
+    console.log(this.vegeTarget.innerText);
 
     const worldPopulation = {
-      men: 504,
-      women: 496
+      men: this.tradTarget.innerText,
+      women: this.vegeTarget.innerText
     };
     const doughnutLabels = Object.keys(worldPopulation);
     const doughnutSata = Object.values(worldPopulation);
@@ -19,7 +21,7 @@ export default class extends Controller {
       data: {
         labels: doughnutLabels,
         datasets: [{
-          label: 'Word Population',
+          label: 'Part de Végétal par rapport au Traditionnel',
           data: doughnutSata,
           backgroundColor: [
             'rgb(255, 99, 132)',
