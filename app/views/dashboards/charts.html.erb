@@ -53,13 +53,14 @@
     <div class="m-2">
       <h2>Gender Ratio</h2>
       <div class="container w-50 chart">
-        <canvas
+        <%# <canvas
   data-controller="chart"
   data-chart-data-value='{ "labels": ["January", "February", "March", "April", "May", "June", "July"], "datasets": [{ "label": "My First dataset", "backgroundColor": "transparent", "borderColor": "#3B82F6", "data": [37, 83, 78, 54, 12, 5, 99] }] }'
-></canvas>
-        <%# <canvas data-controller="chart-co2-impact">
+> %>
+        <%# </canvas> %>
+        <canvas data-controller="chart-co2-impact">
           <!-- TODO: Display doughnut chart below -->
-        </canvas> %>
+        </canvas>
       </div>
     </div>
   </div>
