@@ -20,12 +20,11 @@
     </div>
     <div class="row">
       <div class="col-6">
-          Temps :
-          <i class="fa-regular fa-clock"></i>
+         <i class="img_show fa-regular fa-clock"></i>
           <%= recipe.time %> mn
         </div>
       <div class="col-6">
-          Difficulté :
+        <i class="img_show fa-solid fa-utensils"></i>
           <% if recipe.difficulty == 1 %>
             <i class="fa-solid fa-star"></i>
             <i class="fa-regular fa-star"></i>
@@ -41,7 +40,7 @@
           <% end %>
       </div>
       <div class="col-6 mt-2">
-          Coût :
+         <i class="img_show fa-solid fa-coins"></i>
           <% if recipe.cost == 1 %>
             <i class="fa-solid fa-euro-sign"></i>
           <% elsif recipe.cost == 3 %>
@@ -54,8 +53,8 @@
           <% end %>
       </div>
       <div class="col-6 mt-2">
-          Coût en Co2 :
-          <%= recipe.co2.round%> g
+          <%= image_tag("nuage-de-co2-green.png", id:"img_co2") %>
+            <%= recipe.co2.round%> g
       </div>
     </div>
     <hr>
