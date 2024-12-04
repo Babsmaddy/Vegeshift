@@ -4,12 +4,12 @@ import Swal from 'sweetalert2'
 // Connects to data-controller="sweet-alert"
 export default class extends Controller {
 
-  static values = {message: String}
+  static values = {message: String, redirectUrl: String}
   connect(){
     this.timeout= 3000
     this.showAlert()
     setTimeout(() => {
-
+      window.location.href = this.redirectUrlValue
     }, this.timeout);
   }
 
