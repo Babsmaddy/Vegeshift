@@ -15,14 +15,8 @@ class DashboardsController < ApplicationController
   def charts
     @dailies = current_user.dailies
     @calcul = 0
-    # @dailies.each do |daily|
-    #   daily.recipe.vegetal? ? @calcul += daily.recipe.co2 : trad = daily.recipe
-    #   if trad.traditionnal_recipe_id.nil?
-    #     trad.traditionnal_recipe_id.co2 = 1000
-    #   end
-    #   vege.co2 = 150 if vege.co2.nil?
-    #   @calcul = vege.co2 - trad.traditionnal_recipe.co2
-    #   raise
-    # end
+    @dailies.each do |daily|
+      @calcul = daily.recipe.co2 - daily.recipe.co2_traditional
+    end
   end
 end
