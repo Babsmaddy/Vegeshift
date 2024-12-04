@@ -10,7 +10,19 @@ class DashboardsController < ApplicationController
 
   def list
     @dailies = current_user.dailies
-   
   end
 
+  def charts
+    @dailies = current_user.dailies
+    @calcul = 0
+    # @dailies.each do |daily|
+    #   daily.recipe.vegetal? ? @calcul += daily.recipe.co2 : trad = daily.recipe
+    #   if trad.traditionnal_recipe_id.nil?
+    #     trad.traditionnal_recipe_id.co2 = 1000
+    #   end
+    #   vege.co2 = 150 if vege.co2.nil?
+    #   @calcul = vege.co2 - trad.traditionnal_recipe.co2
+    #   raise
+    # end
+  end
 end
