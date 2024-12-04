@@ -20,11 +20,16 @@ class DailiesController < ApplicationController
     end
   end
 
+  def destroy
+    @daily = Daily.find(params[:id])
+    @daily.destroy
+    redirect_to dashboards_path, status: :see_other
+  end
+
 
   private
 
     def daily_params
       params.require(:daily).permit(:date)
     end
-
 end
