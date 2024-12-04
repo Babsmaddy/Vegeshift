@@ -1,5 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
-import Chart from '@stimulus-components/chartjs'
+import { Chart } from "chart.js";
+// import Chart from "@stimulus-components/chartjs";
 
 // Connects to data-controller="chart-co2-impact"
 export default class extends Controller {
