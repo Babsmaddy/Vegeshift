@@ -18,6 +18,7 @@ class DashboardsController < ApplicationController
     @dailies.each do |daily|
       @calcul = daily.recipe.co2 - daily.recipe.co2_traditional
     end
+
     @yesterday = @dailies.where(date: (Date.today - 1)..Date.today)
     @week = @dailies.where(date: (Date.today - 7)..Date.today)
     @month = @dailies.where(date: (Date.today - 31)..Date.today)

@@ -68,18 +68,18 @@
       <h2>Rapport</h2>
       <div class="container chart">
         <div class="row justify-content-center">
-          <div>
-            <canvas data-controller="chart-co2-impact" class= "w-100">
-              <div class="d-none" data-chart-co2-impact-target="beginning"><%= @beginning %></div>
-              <div class="d-none" data-chart-co2-impact-target="yesterday"><%= @yesterday_co2 %></div>
-              <div class="d-none" data-chart-co2-impact-target="week"><%= @week_co2 %></div>
-              <div class="d-none" data-chart-co2-impact-target="month"><%= @month_co2 %></div>
-              <div class="d-none" data-chart-co2-impact-target="three"><%= @three_co2 %></div>
-              <div class="d-none" data-chart-co2-impact-target="six"><%= @six_co2 %></div>
-              <div class="d-none" data-chart-co2-impact-target="year"><%= @year_co2 %></div>
+          <%# <div> %>
+            <canvas data-controller="chart-co2-impact" data-chart-co2-impact-beginning-value="<%= @beginning %>"
+                                                       data-chart-co2-impact-yesterday-value="<%= @yesterday_co2 %>"
+                                                       data-chart-co2-impact-week-value="<%= @week_co2 %>"
+                                                       data-chart-co2-impact-month-value="<%= @month_co2 %>"
+                                                       data-chart-co2-impact-three-value="<%= @three_co2 %>"
+                                                       data-chart-co2-impact-six-value="<%= @six_co2 %>"
+                                                       data-chart-co2-impact-year-value="<%= @year_co2 %>" >
+
                 <!-- TODO: Display doughnut chart below -->
             </canvas>
-          </div>
+          <%# </div> %>
         </div>
       </div>
     </div>

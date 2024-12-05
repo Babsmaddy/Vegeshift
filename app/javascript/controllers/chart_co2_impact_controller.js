@@ -4,16 +4,25 @@ import { Chart } from "chart.js";
 
 // Connects to data-controller="chart-co2-impact"
 export default class extends Controller {
-  static targets = ["beginning", "yesterday", "week", "month", "year", "three", "six"];
+
+  static values = {
+    beginning: Number,
+    year: Number,
+    six: Number,
+    three: Number,
+    month: Number,
+    week: Number,
+    yesterday: Number,
+  }
   connect() {
     const worldPopulationGrowth = {
-      "Depuis le debut": this.beginningTarget.innerText,
-      "1 an": this.yearTarget.innerText,
-      "6-mois": this.sixTarget.innerText,
-      "3-mois": this.threeTarget.innerText,
-      "1-mois": this.monthTarget.innerText,
-      "1-semaine": this.weekTarget.innerText,
-      "1-jour": this.yesterdayTarget.innerText,
+      "Depuis le debut": this.beginningValue,
+      "1 an": this.yearValue,
+      "6-mois": this.sixValue,
+      "3-mois": this.threeValue,
+      "1-mois": this.monthValue,
+      "1-semaine": this.weekValue,
+      "1-jour": this.yesterdayValue,
     };
 
     const lineLabels = Object.keys(worldPopulationGrowth);
