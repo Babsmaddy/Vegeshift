@@ -11,6 +11,8 @@ export default class extends Controller {
     setTimeout(() => {
       window.location.href = this.redirectUrlValue
     }, this.timeout);
+    console.log(this.messageValue);
+
   }
 
 
