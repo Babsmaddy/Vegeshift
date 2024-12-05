@@ -4,28 +4,40 @@ import { Chart } from "chart.js";
 
 // Connects to data-controller="chart-co2-impact"
 export default class extends Controller {
-  static targets = ["trad", "vege"];
-  connect() {
-    const worldPopulation = {
-      men: this.tradTarget.innerText,
-      women: this.vegeTarget.innerText
-    };
-    const doughnutLabels = Object.keys(worldPopulation);
-    const doughnutSata = Object.values(worldPopulation);
 
-    const doughnut = new Chart(this.element, {
-      type: 'doughnut',
+  static values = {
+    beginning: Number,
+    year: Number,
+    six: Number,
+    three: Number,
+    month: Number,
+    week: Number,
+    yesterday: Number,
+  }
+  connect() {
+    const worldPopulationGrowth = {
+      "Depuis le debut": this.beginningValue,
+      "1 an": this.yearValue,
+      "6-mois": this.sixValue,
+      "3-mois": this.threeValue,
+      "1-mois": this.monthValue,
+      "1-semaine": this.weekValue,
+      "1-jour": this.yesterdayValue,
+    };
+
+    const lineLabels = Object.keys(worldPopulationGrowth);
+    const lineData = Object.values(worldPopulationGrowth);
+
+    const line = new Chart(this.element, {
+      type: 'line',
       data: {
-        labels: doughnutLabels,
+        labels: lineLabels,
         datasets: [{
-          label: 'Part de Végétal par rapport au Traditionnel',
-          data: doughnutSata,
-          backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
-            'rgb(255, 205, 86)'
-          ],
-          hoverOffset: 4
+          label: 'Écart de co2 par rapport au Traditionnel',
+          data: lineData,
+          fill: false,
+          borderColor: '#1FCC79',
+          tension: 0.1
         }]
       }
     });
