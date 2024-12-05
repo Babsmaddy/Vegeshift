@@ -4,6 +4,7 @@ class DailiesController < ApplicationController
     @daily = Daily.new(daily_params)
     @daily.user = current_user
     @daily.recipe = @recipe
+    @favorite = current_user.favorites.find_by(recipe: @recipe) || nil
     if @daily.save
       respond_to do |format|
         format.html { redirect_to recipes_path, notice: "Daily créé avec succès !" }
@@ -16,7 +17,7 @@ class DailiesController < ApplicationController
         end
       end
     else
-      render :new, status: :unprocessable_entity
+      render "recipes/show", locals: { recipe: @recipe, daily: @daily, favorite: @favorite }, status: :unprocessable_entity
     end
   end
 
