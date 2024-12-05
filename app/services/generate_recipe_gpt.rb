@@ -99,7 +99,8 @@ class GenerateRecipeGpt
   def new_photo_gpt
     response = @client.images.generate(
       parameters: {
-        prompt: "Je souhaiterai une image de ce plat #{@recipe.name} qui est un plate végétale. Je ne veux donc pas d'image avec de la viande. Voici la liste d'ingrédients si tu veux pour t'inspirer dans ta création #{@recipe.ingredients.pluck(:name).join(',')}. Cette photo sera destinée à être vue par mes followers sur instagram qui sont habitué à voir des close-up vue de haut de mes plats. J'utilise des filtres à la mode pour un effet réaliste mais qui donne envie d'être dégusté. Je veux uniquement la photo du plat dans une assiette cuisinée, prêt à être servi.",
+        # prompt: "Je souhaiterai une image de ce plat #{@recipe.name} qui est un plate végétale. Je ne veux donc pas d'image avec de la viande. Voici la liste d'ingrédients si tu veux pour t'inspirer dans ta création #{@recipe.ingredients.pluck(:name).join(',')}. Cette photo sera destinée à être vue par mes followers sur instagram qui sont habitué à voir des close-up vue de haut de mes plats. J'utilise des filtres à la mode pour un effet réaliste mais qui donne envie d'être dégusté. Je veux uniquement la photo du plat dans une assiette cuisinée, prêt à être servi.",
+        prompt: "Peux tu trouver une belle photo de cette recette végétarienne de #{@recipe.name}  qui est populaire sur les réseaux sociaux contenant les ingrédients mentionnés dans #{@recipe.ingredients.pluck(:name).join(',')}",
         size: "256x256",
       }
     )

@@ -59,31 +59,14 @@
     </div>
     <hr>
     <div class="text-center">
-      <button type="button" class="button-veggie-100" data-bs-toggle="modal" data-bs-target="#modalCalendar">
+      <button type="button" class="button-veggie-100" data-bs-toggle="modal" data-bs-target="#modalCalendar" turbo-frame="modal">
         Ajouter à ma semaine
       </button>
     </div>
 
       <!-- Modal -->
-      <div class="modal fade" id="modalCalendar" tabindex="-1" aria-labelledby="modalCalendarLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h3 class="modal-title fs-5" id="exampleModalLabel">J'ajoute cette recette à ma semaine</h3>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <%= simple_form_for [recipe, daily] do |f| %>
-                <%= f.input :date,
-                    as: :string,
-                    input_html: { data: { controller: "datepicker" } } %>
-                <div class="text-center">
-                  <%= f.button :submit, class:"button-veggie" %>
-                </div>
-              <% end %>
-            </div>
-          </div>
-        </div>
+      <div id="modals">
+        <%= render "recipes/modal", recipe: recipe, daily: daily %>
       </div>
 
       <%# <div class="text-center">
