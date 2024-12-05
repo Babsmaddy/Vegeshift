@@ -17,10 +17,21 @@
     <div class="col-4">
       <div class="mt-2 text-center">
         <h2>
-          <%= (Date.today.strftime('%a, %d %b %Y').to_date - current_user.created_at.strftime('%a, %d %b %Y').to_date).to_i %>
+          <% a = (Date.today.strftime('%a, %d %b %Y').to_date - current_user.created_at.strftime('%a, %d %b %Y').to_date).to_i %>
+          <% case %>
+          <% when a == 1 %>
+            <p>jour
+          <% when a < 32 %>
+            <p> 1 mois
+          <% when a < 365 %>
+            <%= ((Date.today.strftime('%a, %d %b %Y').to_date - current_user.created_at.strftime('%a, %d %b %Y').to_date).to_i)/12.floor %> <p>mois
+          <% when (365..730) === a %>
+            <%= ((Date.today.strftime('%a, %d %b %Y').to_date - current_user.created_at.strftime('%a, %d %b %Y').to_date).to_i)/365.floor %> <p>an
+          <% when a < 731 %>
+            <%= ((Date.today.strftime('%a, %d %b %Y').to_date - current_user.created_at.strftime('%a, %d %b %Y').to_date).to_i)/365.floor %> <p>années
+          <% end %>
         </h2>
-        <p>
-          jours en tant que <span class="text-primary">VégéShifter</span>
+          en tant que <span class="text-primary">VégéShifter</span>
         </p>
       </div>
     </div>
