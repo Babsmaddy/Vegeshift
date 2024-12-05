@@ -6,6 +6,7 @@
 
 
   <div class="row row-cols-1 row-cols-sm-2 g-3 mb-4">
+  <% if @recipes.any? %>
     <% @recipes.each do |recipe| %>
       <div class="col-6">
         <div class="card m-3">
@@ -28,6 +29,7 @@
                 <% end %>
             <% end  %>
           </div>
+
 
           <div class="card-body d-flex flex-column position-relative">
             <div class="row align-items-center">
@@ -72,5 +74,10 @@
       </div>
     </div>
   <% end %>
+  <% else %>
+  <div class="col-12 text-center mt-5">
+    <p>Aucune recette disponible pour le moment. Revenez plus tard ou ajoutez-en une nouvelle !</p>
+  </div>
+<% end %>
   </div>
 </div>
