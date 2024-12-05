@@ -24,7 +24,7 @@ filepath = "db/bdd_carbone.csv"
 
 user = User.create!(
   username: "Frisbee",
-  email: "frisbee@frisbee.com",
+  email: "frisbee@gmail.com",
   password: "azerty",
   created_at: (Date.today - 400)
 )
@@ -38,8 +38,8 @@ user.save
 puts "#{User.count} utilisateur(s) créé(s)"
 
 
-CSV.foreach(filepath, headers: :first_row) do |ingredient|
-  Ingredient.create!(name: ingredient[:name], co2_kg: ingredient[:co2_kg], co2_gr: ingredient[:co2_gr])
+CSV.foreach(filepath) do |ingredient|
+  Ingredient.create!(name: ingredient[0], co2_kg: ingredient[1], co2_gr: ingredient[2])
 end
 
 puts "#{Ingredient.count} ingrédients ont été créés avec succès !"
