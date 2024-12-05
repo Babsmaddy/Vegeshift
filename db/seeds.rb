@@ -13,6 +13,7 @@ puts "Cleaning the db"
 Ingredient.destroy_all
 Recipe.destroy_all
 RecipeIngredient.destroy_all
+User.destroy_all
 
 #get ingredients from Ademe database (csv 444 ingredients / 3 columns : name, co2_kg, co2_gr)
 filepath = "db/bdd_carbone.csv"
@@ -20,6 +21,21 @@ filepath = "db/bdd_carbone.csv"
 # CSV.foreach(filepath, headers: :first_row) do |row|
 #   puts "#{row['name']} #{row['co2_kg']} #{row['co2_gr']}"
 # end
+
+user = User.create!(
+  username: "Frisbee",
+  email: "frisbee@frisbee.com",
+  password: "azerty",
+  created_at: (Date.today - 400)
+)
+
+photo = "frisbee.jpg"
+
+file_path = File.open("app/assets/images/#{photo}")
+user.photo.attach(io: file_path, filename: "Photo de profil de #{user.username}", content_type: "image/png")
+user.save
+
+puts "#{User.count} utilisateur(s) créé(s)"
 
 
 CSV.foreach(filepath, headers: :first_row) do |ingredient|
