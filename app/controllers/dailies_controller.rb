@@ -6,17 +6,16 @@ class DailiesController < ApplicationController
     @daily.recipe = @recipe
     @favorite = current_user.favorites.find_by(recipe: @recipe) || nil
     if @daily.save
-      redirect_to dashboards_path
-      # respond_to do |format|
-      #   format.html { redirect_to dashboards_path, notice: "Daily créé avec succès !" }
-      #   format.turbo_stream do
-      #     render turbo_stream: turbo_stream.append(
-      #       "alerts",
-      #       partial: "shared/alert",
-      #       locals: { message: "Votre recette a été ajoutée à votre semaine !" }
-      #     )
-      #   end
-      # end
+      respond_to do |format|
+        format.html { redirect_to dashboards_path, notice: "Daily créé avec succès !" }
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.append(
+            "alerts",
+            partial: "shared/alert",
+            locals: { message: "Votre recette a été ajoutée à votre semaine !" }
+          )
+        end
+      end
     else
       render "recipes/show", locals: { recipe: @recipe, daily: @daily, favorite: @favorite }, status: :unprocessable_entity
     end
