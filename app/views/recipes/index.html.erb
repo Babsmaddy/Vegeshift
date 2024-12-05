@@ -87,7 +87,7 @@
 </div>
 <div class="row justify-content-center mt-4">
     <div class="text-center mt-1 p-0">
-      <a href="/recipes/new" class="btn-grad">Je végétalise une recette existante</a>
+      <%= link_to "Je végétalise une recette existante", new_recipe_path(query: params[:query]), class: "btn-grad" %>
     </div>
   </div>
 <div class="row justify-content-center mt-4 " style="position: relative">
