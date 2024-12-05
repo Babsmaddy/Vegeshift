@@ -1,9 +1,9 @@
 <div class="mt-2 text-center">
-  <%= image_tag("recette.jpg", id:"img_main-fav") %>
+  <%= current_user.photo.attached? ? cl_image_tag(current_user.photo.key, id:"img_main-fav") : image_tag("recette.jpg", id:"img_main-fav") %>
 </div>
-<div class="text-center">
+<div class="text-center mt-1">
   <h2>
-    <%= current_user.email %>
+    <%= current_user.username %>
   </h2>
 </div>
 <div class="content-fav mt-4">
