@@ -1,20 +1,18 @@
-<%= turbo_frame_tag "modal" do %>
-  <div class="modal fade" id="modalCalendar" tabindex="-1" aria-labelledby="modalCalendarLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title fs-5" id="exampleModalLabel">J'ajoute cette recette à ma semaine</h3>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <%= simple_form_for [recipe, daily] do |f| %>
-            <%= f.input :date, as: :string, error:"Ce champ doit être rempli", input_html: { data: { controller: "datepicker" } } %>
-            <div class="text-center">
-              <%= f.button :submit, "J'ajoute à ma semaine", class:"button-veggie" %>
-            </div>
-          <% end %>
-        </div>
+<div class="modal fade" id="modalCalendar" tabindex="-1" aria-labelledby="modalCalendarLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title fs-5" id="exampleModalLabel">J'ajoute cette recette à ma semaine</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for [recipe, daily] do |f| %>
+          <%= f.input :date, as: :string, error:"Ce champ doit être rempli", input_html: { data: { controller: "datepicker" } } %>
+          <div class="text-center">
+            <%= f.button :submit, "J'ajoute à ma semaine", class:"button-veggie" %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
-<% end %>
+</div>
