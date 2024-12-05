@@ -7,7 +7,7 @@
 
 .container-fav{
   border-radius: 45px;
-  height: 450px;
+  // height: 450px;
 }
 
 .veggie-ronded{
@@ -96,4 +96,15 @@
   width: 100px;
   border-radius: 50%;
   box-shadow: 0px -1px 10px 0px $secondary;
+}
+
+.img-delete{
+color : white;
+}
+
+
+.trash {
+  position: absolute;
+  top: 2px;
+  right: 5px;
 }

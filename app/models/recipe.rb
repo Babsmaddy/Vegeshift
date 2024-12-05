@@ -23,26 +23,6 @@ class Recipe < ApplicationRecord
     tsearch: { prefix: true }
   }
 
-  after_create :new_photo_gpt
-
-  def new_photo_gpt
-    client = OpenAI::Client.new
-    response = client.images.generate(
-      parameters: {
-        prompt: "Can you find a beautiful popular instagram or pinterest image of the vegetarian recipe of #{name} with the ingredients mentionned in #{self.ingredients.pluck(:name).join(',')}",
-        size: "256x256",
-      }
-    )
-
-    # "Can you find or produce a realistic and colored image of the vegetarian recipe of #{name} beautiful enough for instagram with the ingredients mentionned in #{self.ingredients.pluck(:name).join(',')}"
-    url = response["data"][0]["url"]
-    file = URI.parse(url).open
-
-    photo.purge if photo.attached?
-    photo.attach(io: file, filename: "image of #{name}.jpg", content_type: "image/png")
-    return photo
-  end
-
   def sum_total_co2
     return if ingredients.blank?
     @calcul = 0
