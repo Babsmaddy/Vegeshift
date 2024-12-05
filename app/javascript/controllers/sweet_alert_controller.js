@@ -6,7 +6,7 @@ export default class extends Controller {
 
   static values = {message: String, redirectUrl: String}
   connect(){
-    this.timeout= 3000
+    this.timeout= 2500
     this.showAlert()
     setTimeout(() => {
       window.location.href = this.redirectUrlValue
