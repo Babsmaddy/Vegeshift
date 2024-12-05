@@ -10,6 +10,8 @@
   <div class="pt-3 mb-2">
     <hr id="popup-fav">
   </div>
+
+
   <div class="container-fav p-4">
    <hr>
     <div class="row">
@@ -28,6 +30,9 @@
         <div class="tab-content" id="pills-tabContent">
           <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
              <div class="row row-cols-1 row-cols-sm-2 g-3 mb-4">
+              <div class="text-center my-4">
+                <h3 class="text-uppercase fw-bold">Mes recettes de la semaine</h3>
+              </div>
                 <% @dailies.where(date: (Date.today - 5)..Date.today).sort_by{|daily| daily.date}.each do |daily| %>
                   <div class="col-6">
                     <div class="card veggie-ronded">
@@ -67,6 +72,7 @@
           </div>
           <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
               <div class="row row-cols-1 row-cols-sm-2 g-3 mb-4">
+                <h3 class="text-uppercase fw-bold text-center">Mes favoris</h3>
                 <% @favorites.each do |favorite| %>
                   <div class="col-6">
                     <div class="card veggie-ronded">

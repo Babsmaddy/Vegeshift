@@ -6,6 +6,8 @@ export default class extends Controller {
 
   static values = {message: String, redirectUrl: String}
   connect(){
+    console.log(this);
+    
     this.timeout= 2500
     this.showAlert()
     setTimeout(() => {
