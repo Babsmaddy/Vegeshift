@@ -6,9 +6,6 @@ import { Chart } from "chart.js";
 export default class extends Controller {
   static targets = ["trad", "vege"];
   connect() {
-    console.log(this.tradTarget.innerText);
-    console.log(this.vegeTarget.innerText);
-
     const worldPopulation = {
       men: this.tradTarget.innerText,
       women: this.vegeTarget.innerText
