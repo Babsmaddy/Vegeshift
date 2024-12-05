@@ -33,10 +33,10 @@ export default class extends Controller {
       data: {
         labels: lineLabels,
         datasets: [{
-          label: 'Word Population Growth',
+          label: 'Écart de co2 par rapport au Traditionnel',
           data: lineData,
           fill: false,
-          borderColor: 'rgb(75, 192, 192)',
+          borderColor: '#1FCC79',
           tension: 0.1
         }]
       }
