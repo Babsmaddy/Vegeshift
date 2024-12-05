@@ -6,6 +6,7 @@
 
 
   <div class="row row-cols-1 row-cols-sm-2 g-3 mb-4">
+  <% if @recipes.any? %>
     <% @recipes.each do |recipe| %>
       <div class="col-6">
         <div class="card m-3">
@@ -28,6 +29,7 @@
                 <% end %>
             <% end  %>
           </div>
+
 
           <div class="card-body d-flex flex-column position-relative">
             <div class="row align-items-center">
@@ -72,5 +74,26 @@
       </div>
     </div>
   <% end %>
+  <% else %>
+
+  <div class="warning-text col-12 text-center mt-5">
+    <h1 style="top:0" class="mb-3">Oups !</h1>
+    <h4>La recette <span class="text-primary"><%= params[:query] %> </span> n'existe pas encore mais vous pouvez la créer !</h4>
+  </div>
+
+
+<% end %>
   </div>
 </div>
+<div class="row justify-content-center mt-4">
+    <div class="text-center mt-1 p-0">
+      <a href="/recipes/new" class="btn-grad">Je végétalise une recette existante</a>
+    </div>
+  </div>
+<div class="row justify-content-center mt-4 " style="position: relative">
+  <%= image_tag "fond-no-results.png", style: "
+    top: 15px;
+    position: absolute;"
+ %>
+  </div>
+<div class="container justify-content-center bg-white mt-2">
