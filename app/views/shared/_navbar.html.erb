@@ -3,7 +3,7 @@
     <%= link_to "/", class: "nav-link active" do %>
       <i class="navbar-icon fa-solid fa-house"></i>
     <% end %>
-    <%= link_to "#", class: "nav-link" do %>
+    <%= link_to charts_path, class: "nav-link" do %>
       <i class="navbar-icon fa-solid fa-chart-line"></i>
     <% end %>
     <%= link_to recipes_path, class: "nav-link" do %>
@@ -13,7 +13,11 @@
     <%= link_to "/dashboards/list", class: "nav-link" do %>
       <i class="navbar-icon fa-solid fa-cart-shopping"></i>
     <% end %>
-    <i class="navbar-icon fa-solid fa-user" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></i>
+    <% if user_signed_in? && current_user.photo.attached? %>
+      <%= cl_image_tag(current_user.photo.key, class: "avatar", alt: "dropdown menu", data: { bs_toggle:"collapse", bs_target: "#navbarSupportedContent"}, aria: { controls:"navbarSupportedContent", expanded:"false", label:"Toggle navigation" }) %>
+    <% else %>
+      <i class="navbar-icon fa-solid fa-user" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></i>
+    <% end %>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
