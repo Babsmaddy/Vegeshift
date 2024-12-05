@@ -33,9 +33,10 @@ end
 # terminating a worker in development environments.
 worker_timeout 3600 if ENV.fetch("RAILS_ENV", "development") == "development"
 
-# if Rails.env.development?
-#   plugin :solid_queue
-# end
+
+if rails_env == "development"
+  plugin :solid_queue
+end
 
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
 port ENV.fetch("PORT") { 3000 }

@@ -6,11 +6,11 @@
     <%= current_user.email %>
   </h2>
 </div>
-<div class="content-fav mt-4">
+<div class="content-list mt-4">
   <div class="pt-3 mb-2">
     <hr id="popup-fav">
   </div>
-  <div class="container-fav px-4">
+  <div class="container-list px-4">
    <hr>
     <div class="row">
         <ul class="nav nav-pills justify-content-around p-0" id="pills-tab" role="tablist">
@@ -27,8 +27,8 @@
                  <% daily.recipe.ingredients.each do |ingredient| %>
                  <%# <li> <%= ingredient.name %>
                  <%# <li><%= daily.recipe.recipe_ingredients.find_by(ingredient:ingredient).quantity.to_i%>
-                 <div class="col-12 gap-2">
-                  <i class="fa-solid fa-toggle-off"></i>
+                 <div class="col-12 gap-2 mb-2">
+                  <i class="img_list fa-solid fa-circle"></i>
                   <%= ingredient.name %> - <%=  daily.recipe.recipe_ingredients.find_by(ingredient:ingredient).quantity.to_i %>g
                  <% end %>
                 <% end %>

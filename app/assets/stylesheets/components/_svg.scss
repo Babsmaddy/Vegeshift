@@ -6,9 +6,10 @@ $flatten_deg: 85; // how round will the pancake be at the top/peak (in deg), aff
 $angle: 27; // max pan's angle while flipping (in deg)
 $peak: 40%; // pancake's highest level, obviously ;)
 $color_back: #ffde6b; // background
-$color: #333; // the rest
+$color: green;
 
-.background{
+
+.background {
   height: 100vh;
   width: 100vw;
   background-color: white;
