@@ -1,0 +1,86 @@
+<div class="mt-2 row align-items-center">
+  <div class="col-4">
+    <div class="mt-2 text-center">
+      <%= current_user.photo.attached? ? cl_image_tag(current_user.photo.key, id:"img_main-chart") : image_tag("recette.jpg", id:"img_main-chart") %>
+    </div>
+  </div>
+  <div class="col-8">
+    <div class="text-center">
+      <h2>
+        <%= current_user.username %>
+      </h2>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row justify-content-center align-items-center mt-2">
+    <div class="col-4">
+      <div class="mt-2 text-center">
+        <h2 class="mb-0">
+          <% a = (Date.today.strftime('%a, %d %b %Y').to_date - current_user.created_at.strftime('%a, %d %b %Y').to_date).to_i %>
+          <% case %>
+          <% when a === 1 %>
+            1</h2> <p class="mb-0">jour
+          <% when a < 32 %>
+            1</h2> <p class="mb-0"> mois
+          <% when a < 365 %>
+            <%= ((Date.today.strftime('%a, %d %b %Y').to_date - current_user.created_at.strftime('%a, %d %b %Y').to_date).to_i)/12.floor %> </h2> <p class="mb-0">mois
+          <% when (365..730) === a %>
+            <%= ((Date.today.strftime('%a, %d %b %Y').to_date - current_user.created_at.strftime('%a, %d %b %Y').to_date).to_i)/365.floor %></h2> <p class="mb-0">an
+          <% when a < 731 %>
+            <%= ((Date.today.strftime('%a, %d %b %Y').to_date - current_user.created_at.strftime('%a, %d %b %Y').to_date).to_i)/365.floor %> </h2> <p class="mb-0">années
+          <% end %>
+        </h2>
+          en tant que <span class="text-primary">VégéShifter</span>
+        </p>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="mt-2 text-center">
+        <h2 class="mb-0">
+          <%= @dailies.count %>
+        </h2>
+        <p class="mb-0"><span class="text-primary">Recettes</span> ajoutées
+        </p>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="mt-2 text-center">
+        <h2 class="mb-0">
+          <%= @calcul %>
+        </h2>
+        <p class="mb-0">
+          grammes de <span class="text-primary">CO2</span> réduit
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="content-fav mt-4">
+  <div class="pt-3 mb-2">
+    <hr id="popup-fav">
+  </div>
+  <div class="container-fav px-4">
+   <hr>
+    <div class="m-2">
+      <h2>Rapport</h2>
+      <div class="container chart">
+        <div class="row justify-content-center">
+            <% @total_co2_trad = 0 %>
+            <% @total_co2_vege = 0 %>
+            <% @dailies.each do |daily| %>
+              <% @total_co2_trad += daily.recipe.co2_traditional %>
+              <% @total_co2_vege += daily.recipe.co2 %>
+            <% end %>
+            <canvas data-controller="chart-co2-impact">
+              <div class="d-none" data-chart-co2-impact-target="trad"><%= @total_co2_trad %></div>
+              <div class="d-none" data-chart-co2-impact-target="vege"><%= @total_co2_vege %></div>
+                <!-- TODO: Display doughnut chart below -->
+            </canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
