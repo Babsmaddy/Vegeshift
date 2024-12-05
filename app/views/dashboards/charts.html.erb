@@ -1,13 +1,13 @@
 <div class="mt-2 row align-items-center">
   <div class="col-4">
     <div class="mt-2 text-center">
-      <%= image_tag("recette.jpg", id:"img_main-chart") %>
+      <%= current_user.photo.attached? ? cl_image_tag(current_user.photo.key, id:"img_main-chart") : image_tag("recette.jpg", id:"img_main-chart") %>
     </div>
   </div>
   <div class="col-8">
     <div class="text-center">
       <h2>
-        <%= current_user.email %>
+        <%= current_user.username %>
       </h2>
     </div>
   </div>
