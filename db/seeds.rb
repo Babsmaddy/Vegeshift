@@ -24,7 +24,7 @@ filepath = "db/bdd_carbone.csv"
 
 user = User.create!(
   username: "Frisbee",
-  email: "frisbee@gmail.com",
+  email: "frisbee@me.com",
   password: "azerty",
   created_at: (Date.today - 400)
 )
