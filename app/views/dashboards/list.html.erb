@@ -22,7 +22,7 @@
         <hr>
       <div>
         <div class="row">
-         <% @dailies.each do |daily| %>
+         <% @dailies.where(date: (Date.today - 5)..Date.today).each do |daily| %>
               <div class="col-12">
                  <% daily.recipe.ingredients.each do |ingredient| %>
                  <%# <li> <%= ingredient.name %>

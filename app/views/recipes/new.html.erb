@@ -11,7 +11,8 @@
     <div class="row justify-content-center m-3">
       <h3 class="title row text-center">Trouver une alternative végétale à une recette</h3>
       <div class="name-input input-group mb-1 border rounded-pill border-1 bg-white">
-        <%= form.text_field :title, class: "name-input-text form-control border rounded-pill border-0 bg-white", value: params[:query] %>
+         <%= form_with url: recipes_path, method: :post, data: {turbo: false} do |form|%>
+        <%= form.text_field :title, class: "name-input-text form-control border rounded-pill border-0 bg-white" %>
       </div>
     </div>
 
