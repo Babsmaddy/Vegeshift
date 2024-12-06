@@ -1,43 +1,48 @@
-
-  <div class="cancel row p-2">
-    <%= link_to "Retour", root_path, class: "text-decoration-none text-danger" %>
-  </div>
+<div class="cancel row p-2">
+  <%= link_to "Retour", root_path, class: "text-decoration-none text-danger" %>
+</div>
 
 <div class="row justify-content-center">
-      <%= image_tag "Fond_légumes.png" %>
-  </div>
-<div class="container justify-content-center bg-white mt-2">
+  <%= image_tag "Fond_légumes.png" %>
+</div>
 
-  <div class="row justify-content-center m-3">
-    <h3 class="title row text-center">Trouver une alternative végétale à une recette </h3>
+<div class="container justify-content-center bg-white mt-2">
+  <%= form_with url: recipes_path, method: :post do |form| %>
+    <div class="row justify-content-center m-3">
+      <h3 class="title row text-center">Trouver une alternative végétale à une recette</h3>
       <div class="name-input input-group mb-1 border rounded-pill border-1 bg-white">
-         <%= form_with url: recipes_path, method: :post, data: {turbo: false} do |form|%>
-        <%= form.text_field :title, class: "name-input-text form-control border rounded-pill border-0 bg-white", value:params[:query]%>
+        <%= form.text_field :title, class: "name-input-text form-control border rounded-pill border-0 bg-white", value: params[:query] %>
       </div>
-  </div>
+    </div>
+
     <div class="row text-center text-danger mt-1">
-      <p>ou </p>
+      <p>ou</p>
     </div>
 
     <div class="title-2 row text-left">
-      <h4>Photo de la recette </h4>
+      <h4>Photo de la recette</h4>
     </div>
 
     <div class="row m-1">
       <div class="upload-card p-3 text-center">
-          <div class="icon-new text-center bg-white">
-            <i class="icon-new fa-solid fa-image"></i>
-          </div>
-          <%= form.file_field :temp_photo, class: "form-control border rounded-pill border-2 bg-white" %>
+        <div class="icon-new text-center bg-white">
+          <i class="icon-new fa-solid fa-image"></i>
+        </div>
+        <%= form.file_field :temp_photo, class: "form-control border rounded-pill border-2 bg-white" %>
       </div>
     </div>
 
-    <%# <%= form.url_field :url, class: "form-control border rounded-pill border-0 bg-white", placeholder: "Entre le lien d'une recette" %>
-
-  <div class="row justify-content-center mt-3">
-    <div class="text-center mt-1 p-0">
-      <%= form.submit "Je végétalise !", class: "btn-grad" %>
-      <% end %>
+    <div class="row justify-content-center mt-3">
+      <div class="text-center mt-1 p-0">
+        <%= form.submit "Je végétalise !", class: "btn-grad" %>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>
+
+
+
+
+
+
+
